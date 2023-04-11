@@ -16,7 +16,7 @@
 
 main {
   padding: 4rem 2rem;
-  max-width: 600px;
+  max-width: 850px;
   margin: auto;
 }
 
@@ -26,4 +26,31 @@ body {
 
 html, body, #app {
   height: 100%;
+}
+
+button {
+  padding: .3rem .7rem;
+}
+
+button:has(.icon) {
+  display: flex;
+  align-items: center;
+}
+
+button:has(.icon):not(:has(p)) .icon {
+  margin-right: 0;
+}
+
+button .icon {
+  height: 24px;
+  margin-right: .5rem;
+}
+
+button.md .icon {
+  height: 18px;
+}
+
+button:has(.icon) p {
+  white-space: nowrap;
+  margin: 0;
 }
