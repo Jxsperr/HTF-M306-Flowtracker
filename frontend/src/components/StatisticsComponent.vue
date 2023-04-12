@@ -99,7 +99,6 @@ let entries = [
   }
 ]
 
-
 entries = entries.sort((a, b) => {
     const dateA = new Date(a.dateCreated);
     const dateB = new Date(b.dateCreated);
@@ -116,15 +115,11 @@ entries = entries.sort((a, b) => {
 
     <main>
         <header>
-          <h1>Diary</h1>
+          <h1>Statistics</h1>
         </header>
-
-        <section id="entries">
-            <card class="entry" v-for="entry of entries" :entry="entry"></card>
-        </section>
     </main>
 
-    <NavBottom activePage="diary"></NavBottom>
+    <NavBottom activePage="statistics"></NavBottom>
 </template>
 
 <style scoped>
