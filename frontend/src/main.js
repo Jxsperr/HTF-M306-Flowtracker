@@ -1,8 +1,10 @@
 import { createApp } from 'vue'
 import './style.css'
 import AppComponent from './App.vue'
-import HomeComponent from "./components/Home.vue"
-import StatisticsComponent from "./components/StatisticsComponent.vue"
+import Diary from "./components/Diary.vue"
+import Statistics from "./components/Statistics.vue"
+import Explore from "./components/Explore.vue"
+import Profile from "./components/Profile.vue"
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -10,10 +12,16 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
-            path: '/', component: HomeComponent
+            path: '/explore', component: Explore
         },
         {
-            path: '/statistics', component: StatisticsComponent
+            path: '/', component: Diary
+        },
+        {
+            path: '/statistics', component: Statistics
+        },
+        {
+            path: '/profile', component: Profile
         }
     ]
 })

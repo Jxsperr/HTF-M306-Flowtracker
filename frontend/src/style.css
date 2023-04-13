@@ -1,6 +1,6 @@
 :root {
   font-family: 'Karla', sans-serif;
-  line-height: 1.5;
+  line-height: 1.3;
   font-weight: 400;
 
   font-synthesis: none;
@@ -62,7 +62,6 @@ html, body, #app {
 
 p, a {
   letter-spacing: 0.04rem;
-  line-height: 2.3rem;
 }
 
 a, a:visited {
@@ -213,4 +212,10 @@ button.tertiary:is(:hover, :active){
 
 button.tertiary:active {
   background-color: var(--col-light-gray);
+}
+
+@media screen and (max-width: 450px) {
+  p {
+    font-size: 1.2rem;
+  }
 }

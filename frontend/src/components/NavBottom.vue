@@ -1,5 +1,11 @@
 <template>
     <nav class="mobilemenu">
+        <router-link to="/explore">
+            <button :class="`tertiary ${activePage=='explore' ? 'active' : ''}`">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l2-6l6-2l-2 6l-6 2"></path><circle cx="12" cy="12" r="9"></circle><path d="M12 3v2"></path><path d="M12 19v2"></path><path d="M3 12h2"></path><path d="M19 12h2"></path></g></svg>
+            </button>
+        </router-link>
+
         <router-link to="/">
             <button :class="`tertiary ${activePage=='diary' ? 'active' : ''}`">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m3 0v18"></path><path d="M13 8h2"></path><path d="M13 12h2"></path></g></svg>
@@ -12,7 +18,13 @@
 
         <router-link to="/statistics">
             <button :class="`tertiary ${activePage=='statistics' ? 'active' : ''}`">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><path d="M3 12h4l3 8l4-16l3 8h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l4-6l4 2l4-5l4 4v5H4"></path><path d="M4 12l3-4l4 2l5-6l4 4"></path></g></svg>
+            </button>
+        </router-link>
+
+        <router-link to="/profile">
+            <button :class="`tertiary ${activePage=='profile' ? 'active' : ''}`">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="10" r="3"></circle><path d="M6.168 18.849A4 4 0 0 1 10 16h4a4 4 0 0 1 3.834 2.855"></path></g></svg>
             </button>
         </router-link>
     </nav>
@@ -53,12 +65,11 @@ nav.mobilemenu {
 }
 
 nav.mobilemenu button {
-    margin: 0;
+    margin: 0 .8rem;
 }
 
 nav.mobilemenu button.plus {
     margin: 0 1.5rem;
-
     color: var(--col-white);
     background-color: var(--col-primary);
 

@@ -25,6 +25,8 @@
     import { ref } from 'vue'
     import Emoji from './Emoji.vue'
 
+    import { formatDate } from '../services/formatDate';
+
     const props = defineProps({
         entry: {
             type: Object,
@@ -32,7 +34,7 @@
         }
     })
 
-    const dateCreated = ref(props.entry.dateCreated)
+    const dateCreated = ref(formatDate(props.entry.dateCreated))
     const entryEmotions = ref(props.entry.emotions)
     const entryTitle = ref(props.entry.title)
     const entryDescription = ref(props.entry.description)
@@ -123,7 +125,7 @@
     }
 
     .description {
-        
+        white-space: pre-wrap;
     }
 
     .title {

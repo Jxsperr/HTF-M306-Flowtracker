@@ -1,5 +1,5 @@
 <script setup>
-import Card from './Card.vue'
+import DiaryEntry from './DiaryEntry.vue'
 import NavTop from './NavTop.vue'
 import NavBottom from './NavBottom.vue'
 
@@ -99,16 +99,12 @@ let entries = [
   }
 ]
 
-
 entries = entries.sort((a, b) => {
     const dateA = new Date(a.dateCreated);
     const dateB = new Date(b.dateCreated);
 
     return dateB - dateA;
-  }).map(entry => {
-    entry.dateCreated = formatDate(entry.dateCreated)
-    return entry
-})
+  })
 </script>
 
 <template>
@@ -120,7 +116,7 @@ entries = entries.sort((a, b) => {
         </header>
 
         <section id="entries">
-            <card class="entry" v-for="entry of entries" :entry="entry"></card>
+            <DiaryEntry class="entry" v-for="entry of entries" :entry="entry"></DiaryEntry>
         </section>
     </main>
 
