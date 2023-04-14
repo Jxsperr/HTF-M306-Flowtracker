@@ -34,6 +34,10 @@
         margin-bottom: .4rem;
     }
     
+    div:is(:hover, :active){
+        z-index: 100;
+    }
+    
     .emoji {
         display: inline-block;
         text-shadow: 2px 2px 4px var(--col-light-gray);
@@ -88,5 +92,17 @@
         opacity: 1;
         visibility: visible;
         box-shadow: var(--shadow-sm);
+    }
+
+    @media screen and (max-width: 400px) {
+        .emoji {
+            font-size: 2.5rem;
+        }
+    }
+
+    @media screen and (max-width: 280px) {
+        .emoji {
+            font-size: 2rem;
+        }
     }
 </style>

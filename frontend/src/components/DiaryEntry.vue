@@ -1,14 +1,14 @@
 <template>
     <div class="entry">
         <div class="emojis">
-            <Emoji v-for="emotion of entryEmotions" :emotionId="emotion"></Emoji>
+            <Emoji v-for="emotion of props.entry.emotions" :emotionId="emotion"></Emoji>
         </div>
 
-        <p class="title">{{ trimStringToWords(entryTitle) }}</p>
-        <p class="description" v-if="entryDescription">{{ trimStringToWords(entryDescription) }}</p>
+        <p class="title" v-if="props.entry.title">{{ trimStringToWords(props.entry.title) }}</p>
+        <p class="description" v-if="props.entry.description">{{ trimStringToWords(props.entry.description) }}</p>
 
         <div class="bottom">
-            <p class="date">{{ dateCreated }}</p>
+            <p class="date">{{ formatDate(props.entry.dateCreated) }}</p>
             <div class="buttons">
                 <button class="tertiary" @click="edit">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-3"></path><path d="M9 15h3l8.5-8.5a1.5 1.5 0 0 0-3-3L9 12v3"></path><path d="M16 5l3 3"></path></g></svg>
@@ -34,11 +34,6 @@
         }
     })
 
-    const dateCreated = ref(formatDate(props.entry.dateCreated))
-    const entryEmotions = ref(props.entry.emotions)
-    const entryTitle = ref(props.entry.title)
-    const entryDescription = ref(props.entry.description)
-
     function edit() {
     // Implement edit functionality
     }
@@ -48,18 +43,20 @@
     }
 
     function trimStringToWords(str) {
-    if (str.length > 200) {
-        str = str.substring(0, 200);
-        str = str.substring(0, Math.min(str.length, str.lastIndexOf(" ")));
-        str += '...';
-    }
-    return str;
+        if (str.length > 200) {
+            str = str.substring(0, 200);
+            str = str.substring(0, Math.min(str.length, str.lastIndexOf(" ")));
+            str += '...';
+        }
+        return str;
     }
 </script>
 
 <style scoped>
     .entry {
         position: relative;
+
+        box-sizing: border-box;
 
         background-color: var(--col-very-light-gray);
 
@@ -143,7 +140,21 @@
 
     @media screen and (max-width: 600px) {
         .entry {
-            padding: 2rem 2rem 2rem 2rem;
+            padding: 2rem;
+        }
+
+        .emojis {
+            margin-bottom: 1rem;
+        }
+    }
+
+    @media screen and (max-width: 350px) {
+        .title {
+            font-size: 1.5rem;
+        }
+
+        .entry {
+            padding: 1rem;
         }
     }
 

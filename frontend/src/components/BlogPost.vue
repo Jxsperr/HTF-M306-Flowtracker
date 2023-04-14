@@ -1,22 +1,24 @@
 <template>
     <div class="post">
-        <p class="title">{{ title }}</p>
+        <header v-if="post.image" :style="{ backgroundImage: `url(/explore_images/${post.image})` }"></header>
 
-        <p class="date">{{ dateCreated }}</p>
-        <p class="content">{{ content }}</p>
+        <div class="body">
+            <p class="title">{{ post.title }}</p>
 
-        <div class="bottom">
-            <LikeButton :id="id" :likeCount="likeCount"></LikeButton>
-            <button class="tertiary">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="18" cy="18" r="3"></circle><path d="M8.7 10.7l6.6-3.4"></path><path d="M8.7 13.3l6.6 3.4"></path></g></svg>
-            </button>
+            <p class="date">{{ post.dateCreated }}</p>
+            <p class="content">{{ post.content }}</p>
+
+            <div class="bottom">
+                <LikeButton :id="id" :likeCount="post.likeCount"></LikeButton>
+                <button class="tertiary">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="18" cy="18" r="3"></circle><path d="M8.7 10.7l6.6-3.4"></path><path d="M8.7 13.3l6.6 3.4"></path></g></svg>
+                </button>
+            </div>
         </div>
     </div>
 </template>
   
 <script setup>
-    import { ref } from 'vue'
-    import { formatDate } from '../services/formatDate';
     import LikeButton from './LikeButton.vue'
 
     const props = defineProps({
@@ -25,31 +27,26 @@
             required: true
         }
     })
-
-    const id = ref(props.post.id)
-    const dateCreated = ref(formatDate(props.post.dateCreated))
-    const title = ref(props.post.title)
-    const content = ref(props.post.content)
-    const likeCount = ref(props.post.likeCount)
 </script>
 
 <style scoped>
     .post {
-        position: relative;
-
         box-sizing: border-box;
 
         background-color: var(--col-very-light-gray);
 
         border-radius: var(--round);
-        margin: 3rem auto;
+        margin: 1rem auto;
 
         width: 100%;
 
-        padding: 4rem;
         box-shadow: var(--shadow-sm);
 
         transition: box-shadow var(--transition-time);
+    }
+
+    .post .body {
+        padding: 2rem 4rem 4rem 4rem;
     }
 
     .post:is(:hover, :active) {
@@ -112,9 +109,22 @@
         font-weight: bold;
     }
 
+    .post header {
+        width: 100%;
+        height: 300px;
+
+        background-color: var(--col-almost-very-light-gray);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        border-top-left-radius: var(--round);
+        border-top-right-radius: var(--round);
+    }
+
     @media screen and (max-width: 600px) {
-        .post {
-            padding: 2rem;
+        .post .body {
+            padding: 1rem 2rem 2rem 2rem;
         }
     }
 

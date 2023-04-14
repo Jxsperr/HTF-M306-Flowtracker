@@ -1,4 +1,9 @@
-export function formatDate(timestamp) {
+const monthNames = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+]
+
+function formatDate(timestamp) {
     const inputDate = new Date(timestamp)
     const today = new Date()
     const yesterday = new Date(today)
@@ -6,11 +11,6 @@ export function formatDate(timestamp) {
   
     const isToday = inputDate.toDateString() === today.toDateString()
     const isYesterday = inputDate.toDateString() === yesterday.toDateString()
-  
-    const monthNames = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ]
   
     const month = monthNames[inputDate.getMonth()]
     const day = inputDate.getDate()
@@ -39,4 +39,9 @@ export function formatDate(timestamp) {
   
       return `${year}, ${month} ${day}${ordinal(day)}, ${formattedHours}.${formattedMinutes} ${amPm}`
     }
+  }
+
+  export {
+    monthNames,
+    formatDate
   }

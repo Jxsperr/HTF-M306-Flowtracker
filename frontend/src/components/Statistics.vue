@@ -1,11 +1,8 @@
 <script setup>
-import NavTop from './NavTop.vue'
 import NavBottom from './NavBottom.vue'
 </script>
 
 <template>
-  <NavTop></NavTop>
-
     <main>
         <header>
           <h1>Statistics</h1>

@@ -1,48 +1,130 @@
 <template>
-    <nav class="mobilemenu">
+    <nav>
         <router-link to="/explore">
-            <button :class="`tertiary ${activePage=='explore' ? 'active' : ''}`">
+            <button :class='{
+                "tertiary": true,
+                "active": activePage==="explore"
+            }'>
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l2-6l6-2l-2 6l-6 2"></path><circle cx="12" cy="12" r="9"></circle><path d="M12 3v2"></path><path d="M12 19v2"></path><path d="M3 12h2"></path><path d="M19 12h2"></path></g></svg>
             </button>
         </router-link>
 
         <router-link to="/">
-            <button :class="`tertiary ${activePage=='diary' ? 'active' : ''}`">
+            <button :class='{
+                "tertiary": true,
+                "active": activePage==="diary"
+            }'>
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m3 0v18"></path><path d="M13 8h2"></path><path d="M13 12h2"></path></g></svg>
             </button>
         </router-link>
 
-        <button class="tertiary plus">
+        <button class="tertiary plus" @click="openModal">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="M5 12h14"></path></g></svg>
         </button>
 
         <router-link to="/statistics">
-            <button :class="`tertiary ${activePage=='statistics' ? 'active' : ''}`">
+            <button :class='{
+                "tertiary": true,
+                "active": activePage==="statistics"
+            }'>
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l4-6l4 2l4-5l4 4v5H4"></path><path d="M4 12l3-4l4 2l5-6l4 4"></path></g></svg>
             </button>
         </router-link>
 
         <router-link to="/profile">
-            <button :class="`tertiary ${activePage=='profile' ? 'active' : ''}`">
+            <button :class='{
+                "tertiary": true,
+                "active": activePage==="profile"
+            }'>
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="10" r="3"></circle><path d="M6.168 18.849A4 4 0 0 1 10 16h4a4 4 0 0 1 3.834 2.855"></path></g></svg>
             </button>
         </router-link>
     </nav>
+
+    <Modal modalTitle="New Flow" :show="modalOpen" @close="modalClosed">
+        <template #content>
+            <div class="emotionSelector">
+                <Emoji showLabel="true" showTooltip="false" @click="()=> toggleEmotion(emotion.id)" :class='{
+                    "emotion": true,
+                    "selected": newEntry.selectedEmotions.includes(emotion.id)
+                }' v-for="emotion of emotions" :emotionId="emotion.id"></Emoji>
+            </div>
+
+            <Input id="flowTitle" label="Title" v-model="newEntry.title" />
+            <Textarea id="flowDescription" label="Description" v-model="newEntry.description" />
+
+            <div class="submitContainer">
+                <button @click="createEntry">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    <p>Create</p>
+                </button>
+            </div>
+        </template>
+    </Modal>
 </template>
 
 <script setup>
 import { RouterLink } from 'vue-router'
 import { ref } from 'vue'
 
+import Modal from './Modal.vue'
+import Emoji from './Emoji.vue'
+import Input from './Input.vue'
+import Textarea from './Textarea.vue'
+
 const props = defineProps({
     activePage: String
 })
 
+const emotions = [
+        { id: 0, title: 'Joy', emoji: '😊' },
+        { id: 1, title: 'Sadness', emoji: '😔' },
+        { id: 2, title: 'Anger', emoji: '🤬' },
+        { id: 3, title: 'Anxiety', emoji: '😨' },
+        { id: 4, title: 'Love', emoji: '❤️' },
+        { id: 5, title: 'Surprise', emoji: '😮' },
+        { id: 6, title: 'Disgust', emoji: '🤢' },
+        { id: 7, title: 'Hope', emoji: '🤗' },
+        { id: 8, title: 'Anticipation', emoji: '🤔' }
+    ]
+
+const newEntry = ref({
+    title: '',
+    selectedEmotions: []
+})
 const activePage = ref(props.activePage)
+
+const modalOpen = ref(false)
+
+function openModal(){
+    modalOpen.value = true
+}
+
+function toggleEmotion(emotionId) {
+    if(newEntry.value.selectedEmotions.includes(emotionId)){
+        let idx = newEntry.value.selectedEmotions.findIndex(_id => _id == emotionId)
+        newEntry.value.selectedEmotions.splice(idx, 1)
+    } else {
+        newEntry.value.selectedEmotions.push(emotionId)
+    }
+}
+
+function modalClosed(){
+    newEntry.value.selectedEmotions = []
+    newEntry.value.title = ''
+    
+    modalOpen.value = false
+}
+
+function createEntry(){
+    console.log(newEntry.value)
+
+    modalClosed()
+}
 </script>
 
 <style scoped>
-nav.mobilemenu {
+nav {
     display: flex;
 
     box-sizing: border-box;
@@ -61,37 +143,42 @@ nav.mobilemenu {
 
     box-shadow: var(--shadow-md);
 
-    width: 100%;
+    width: 100vw;
 }
 
-nav.mobilemenu button {
-    margin: 0 .8rem;
+nav button {
+    margin: 0 .4rem;
 }
 
-nav.mobilemenu button.plus {
+nav button.plus {
     margin: 0 1.5rem;
     color: var(--col-white);
     background-color: var(--col-primary);
 
+    box-shadow: var(--shadow-primary-sm);
+
     border: 3px solid var(--col-primary);
+
+    transition: box-shadow var(--transition-time), background-color var(--transition-time), color var(--transition-time), border-color var(--transition-time);
 }
 
-nav.mobilemenu button .icon {
-    width: 32px;
-    height: 32px;
+nav button.plus:is(:hover, :active) {
+    box-shadow: var(--shadow-primary-md);
+    background-color: var(--col-primary-dark);
+    border-color: var(--col-primary-dark);
 }
 
-nav.mobilemenu button.plus:is(:hover, :active) {
-    background-color: transparent;
-    color: var(--col-primary);
+nav button.plus:active {
+    background-color: var(--col-primary-darker);
+    border-color: var(--col-primary-darker);
 }
 
-nav.mobilemenu button.active {
+nav button.active {
     position: relative;
     color: var(--col-black);
 }
 
-nav.mobilemenu button.active::after {
+nav button.active::after {
     content: '';
 
     position: absolute;
@@ -106,5 +193,106 @@ nav.mobilemenu button.active::after {
     border-radius: 2px;
 
     background-color: var(--col-black);
+}
+
+@media screen and (max-width: 580px) {
+    nav {
+        padding-bottom: 1.5rem;
+    }
+
+    nav button {
+        margin: 0 .3rem;
+    }
+
+    nav button.plus {
+        margin: 0 .8rem;
+    }
+
+    nav button, nav button.plus {
+        padding: .7rem;
+    }
+
+    nav button.active::after {
+        bottom: 2px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    nav button .icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    nav button, nav button.plus {
+        padding: .5rem;
+    }
+
+    nav button {
+        margin: 0 .1rem;
+    }
+
+    nav button.plus {
+        margin: 0 .4rem;
+    }
+
+    nav button.active::after {
+        bottom: 2px;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    nav {
+        width: fit-content;
+        left: 50%;
+        bottom: 2rem;
+        translate: -50%;
+
+        padding-bottom: .5rem;
+
+        border-radius: var(--round);
+    }
+}
+
+.emotionSelector {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    max-width: 490px;
+
+    margin: auto;
+
+    position: relative;
+}
+
+.emotionSelector .emotion {
+    opacity: 1;
+
+    margin: .5rem;
+
+    filter: grayscale(100%);
+
+    cursor: pointer;
+
+    transition: filter var(--transition-time), opacity var(--transition-time);
+}
+
+.emotionSelector .emotion.selected {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+.submitContainer {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 2rem;
+}
+
+@media screen and (max-width: 500px) {
+    .emotionSelector {
+        max-width: 280px;
+    }
 }
 </style>
