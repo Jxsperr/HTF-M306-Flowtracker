@@ -41,35 +41,32 @@ function closeModal(){
     left: 0;
 
     width: 100vw;
-    height: 100vh;
+    height: 100%;
 
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .background {
     position: fixed;
+
+    cursor: pointer;
 
     top: 0;
     left: 0;
 
     width: 100vw;
-    height: 100vh;
+    height: 100%;
 
     background-color: var(--col-light-gray);
 }
 .modal {
+    position: relative;
+    
     display: block;
     box-sizing: border-box;
 
-    position: absolute;
+    margin: 1rem auto;
 
-    top: 0;
-    left: 50%;
-
-    margin: 1rem 0;
-
-    translate: -50%;
-
-    width: calc(100vw - 4rem);
+    width: 100%;
     max-width: 800px;
 
     border-radius: var(--round);

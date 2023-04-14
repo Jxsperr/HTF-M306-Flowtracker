@@ -7,6 +7,7 @@ import Explore from "./components/Explore.vue"
 import Profile from "./components/Profile.vue"
 
 import { createRouter, createWebHistory } from 'vue-router'
+import VueLazyload from 'vue-lazyload'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -28,5 +29,6 @@ const router = createRouter({
 
 const App = createApp(AppComponent)
 
+App.use(VueLazyload)
 App.use(router)
 App.mount('#app')
