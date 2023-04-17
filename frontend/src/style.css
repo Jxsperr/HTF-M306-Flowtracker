@@ -10,7 +10,9 @@
   -webkit-text-size-adjust: 100%;
 
   --col-white: #eff7f6; /* Mint cream */
-  --col-white-transparent: #EFF7F6CC; 
+  --col-white-transparent: #EFF7F6CC;
+  --col-white-transparenter: #EFF7F688;
+  --col-white-transparenter-2: #EFF7F644;
   --col-very-light-gray: #31363811;
   --col-almost-very-light-gray: #3136381A;
   --col-light-gray: #31363844;
@@ -67,6 +69,12 @@ main>header:first-of-type {
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 800px) {
+  main>header:first-of-type {
+    margin-bottom: 1rem;
+  }
 }
 
 main>header:first-of-type .icon {

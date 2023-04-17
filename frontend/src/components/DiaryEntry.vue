@@ -1,19 +1,19 @@
 <template>
     <div class="entry">
-        <div class="emojis">
-            <Emoji v-for="emotion of props.entry.emotions" :emotionId="emotion"></Emoji>
+        <div class="emojis" v-if="flow.emotions">
+            <Emoji v-for="(emotionId, index) in flow.emotions" :emotionId="emotionId" :key="emotionId + '-' + index" />
         </div>
 
-        <p class="title" v-if="props.entry.title">{{ trimStringToWords(props.entry.title) }}</p>
-        <p class="description" v-if="props.entry.description">{{ trimStringToWords(props.entry.description) }}</p>
+        <p class="title">{{ trimStringToWords(flow.title) }}</p>
+        <p class="description" v-if="flow.description">{{ trimStringToWords(flow.description) }}</p>
 
         <div class="bottom">
-            <p class="date">{{ formatDate(props.entry.dateCreated) }}</p>
+            <p class="date">{{ formatDate(flow.dateCreated) }}</p>
             <div class="buttons">
                 <button class="tertiary" @click="edit">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-3"></path><path d="M9 15h3l8.5-8.5a1.5 1.5 0 0 0-3-3L9 12v3"></path><path d="M16 5l3 3"></path></g></svg>
                 </button>
-                <button class="tertiary" @click="delete">
+                <button class="tertiary" @click="remove">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"></path><path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"></path></g></svg>
                 </button>
             </div>
@@ -22,24 +22,22 @@
   </template>
   
 <script setup>
-    import { ref } from 'vue'
     import Emoji from './Emoji.vue'
 
-    import { formatDate } from '../services/formatDate';
+    import { formatDate } from '../services/formatDate'
 
     const props = defineProps({
-        entry: {
-            type: Object,
-            required: true
-        }
+        flow: Object
     })
 
+    const emits = defineEmits(['remove', 'edit'])
+
     function edit() {
-    // Implement edit functionality
+        emits('edit', props.flow.id)
     }
 
     function remove() {
-    // Implement delete functionality
+        emits('remove', props.flow.id)
     }
 
     function trimStringToWords(str) {

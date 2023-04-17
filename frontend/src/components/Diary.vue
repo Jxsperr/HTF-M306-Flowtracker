@@ -1,9 +1,15 @@
 <script setup>
 import DiaryEntry from './DiaryEntry.vue'
 import NavBottom from './NavBottom.vue'
-import { monthNames } from '../services/formatDate'
+import Modal from './Modal.vue'
+import EditFlowModal from './EditFlowModal.vue'
 
-let entries = [
+import { monthNames } from '../services/formatDate'
+import { ref } from 'vue';
+
+const entries = ref(null)
+
+entries.value = [
   {
     id: 0,
     emotions: [0, 1],
@@ -118,6 +124,11 @@ let entries = [
   }
 ]
 
+const entryForRemoval = ref(null)
+const entryForEdit = ref(null)
+
+const editModalData = ref(null)
+
 function groupEntriesByMonth(entries) {
   const groupedEntries = {}
 
@@ -139,7 +150,51 @@ function groupEntriesByMonth(entries) {
   return groupedEntries
 }
 
-entries = groupEntriesByMonth(entries)
+entries.value = groupEntriesByMonth(entries.value)
+
+function cancelRemoveEntry() {
+  entryForRemoval.value = null
+}
+
+function removeEntry() {
+  let idx = entries.value[entryForRemoval.value[0]].findIndex(entry => entry.id == entryForRemoval.value[1])
+
+  entries.value[entryForRemoval.value[0]].splice(idx, 1)
+
+  if(entries.value[entryForRemoval.value[0]].length == 0)
+    delete entries.value[entryForRemoval.value[0]]
+
+  entryForRemoval.value = null
+}
+
+function openEditEntryModal(date, id) {
+  entryForEdit.value = [date, id]
+
+  let entry = entries.value[entryForEdit.value[0]].find(entry => entry.id == entryForEdit.value[1])
+
+  editModalData.value = {
+    id: id,
+    title: entry.title,
+    description: entry.description,
+    emotions: [...entry.emotions]
+  }
+}
+
+function cancelEditEntry() {
+  entryForEdit.value = null
+  editModalData.value = null
+}
+
+function editEntry(editedFlow) {
+  let idx = entries.value[entryForEdit.value[0]].findIndex(entry => entry.id == editedFlow.id)
+
+  entries.value[entryForEdit.value[0]][idx].emotions = [...editedFlow.emotions]
+  entries.value[entryForEdit.value[0]][idx].title = editedFlow.title
+  entries.value[entryForEdit.value[0]][idx].description = editedFlow.description
+
+  entryForEdit.value = null
+  editModalData.value = null
+}
 </script>
 
 <template>
@@ -152,26 +207,60 @@ entries = groupEntriesByMonth(entries)
         <section class="group" v-for="(group, date) in entries">
             <h2>{{ date.split(' ')[0] }}<span class="year">{{ date.split(' ')[1] }}</span></h2>
 
-            <DiaryEntry class="entry" v-for="entry of group" :entry="entry"></DiaryEntry>
+            <DiaryEntry
+              class="entry"
+              v-for="flow of group"
+              :flow="flow"
+              @edit="id => openEditEntryModal(date, id)"
+              @remove="id => entryForRemoval = [date, id]" />
         </section>
     </main>
+
+    <Modal v-if="entryForRemoval != null" modal-title="Delete Flow" title="Delete Flow?" @close="cancelRemoveEntry">
+      <template #content>
+        <p>It will be gone <b>forever.</b></p>
+        <div class="deleteModalButtons">
+          <button class="filled" @click="cancelRemoveEntry">
+            <p>Cancel</p>
+          </button>
+          
+          <button @click="removeEntry">
+            <p>Delete</p>
+          </button>
+        </div>
+      </template>
+    </Modal>
+
+    <EditFlowModal
+      v-if="entryForEdit"
+      @close="cancelEditEntry"
+      @save="editedFlow => editEntry(editedFlow)"
+      :flow="editModalData" />
 
     <NavBottom activePage="diary"></NavBottom>
 </template>
 
 <style scoped>
-    .group:first-of-type h2 {
-      margin-top: 0;
-    }
-    
-    .group {
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-    }
+  .deleteModalButtons {
+  display: flex;
+  }
 
-    h2 .year {
-      margin-left: 1rem;
-      color: var(--col-dark-gray);
-    }
+  .deleteModalButtons button:first-of-type {
+    margin-right: 1rem;
+  }
+  
+  .group:first-of-type h2 {
+    margin-top: 0;
+  }
+  
+  .group {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+  }
+
+  h2 .year {
+    margin-left: 1rem;
+    color: var(--col-dark-gray);
+  }
 </style>

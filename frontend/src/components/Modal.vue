@@ -1,8 +1,7 @@
 <script setup>
 const props = defineProps({
     modalTitle: String,
-    title: String,
-    show: Boolean
+    title: String
 })
 
 const emit = defineEmits(['close'])
@@ -13,7 +12,7 @@ function closeModal(){
 </script>
 
 <template>
-    <div v-if="props.show" class="container">
+    <div class="container">
         <div class="background" @click="closeModal"></div>
 
         <div class="modal">
@@ -44,6 +43,8 @@ function closeModal(){
     height: 100%;
 
     overflow-y: scroll;
+
+    z-index: 200;
 }
 .background {
     position: fixed;
@@ -66,7 +67,7 @@ function closeModal(){
 
     margin: 1rem auto;
 
-    width: 100%;
+    width: fit-content;
     max-width: 800px;
 
     border-radius: var(--round);
@@ -102,7 +103,7 @@ function closeModal(){
 }
 
 .title {
-    margin-top: 5rem;
+    margin-top: 0;
 }
 
 .content {

@@ -79,7 +79,7 @@
     border: 0;
     border-radius: var(--round);
     outline: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     
     background-color: var(--col-almost-very-light-gray);
   }
@@ -96,7 +96,7 @@
     position: absolute;
     left: 1rem;
     top: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--col-dark-gray);
     pointer-events: none;
     transition: left var(--transition-time), top var(--transition-time), font-size var(--transition-time), color var(--transition-time);

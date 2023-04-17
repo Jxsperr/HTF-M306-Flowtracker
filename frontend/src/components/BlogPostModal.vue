@@ -16,7 +16,7 @@
                 <p class="content">{{ post.content }}</p>
 
                 <div class="bottom">
-                    <LikeButton :id="id" :likeCount="post.likeCount"></LikeButton>
+                    <LikeButton :id="post.id" :likeCount="post.likeCount"></LikeButton>
                     <button class="tertiary">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="18" cy="18" r="3"></circle><path d="M8.7 10.7l6.6-3.4"></path><path d="M8.7 13.3l6.6 3.4"></path></g></svg>
                     </button>
@@ -33,8 +33,7 @@
 
     const props = defineProps({
         post: {
-            type: Object,
-            required: true
+            type: Object
         }
     })
 
@@ -56,6 +55,8 @@
         height: 100%;
 
         overflow-y: scroll;
+
+        z-index: 200;
     }
     .background {
         position: fixed;
@@ -160,6 +161,14 @@
         margin: 0;
 
         color: var(--col-white);
+    }
+
+    .closebutton:hover {
+        background-color: var(--col-white-transparenter-2);
+    }
+
+    .closebutton:active {
+        background-color: var(--col-white-transparenter);
     }
 
     @media screen and (max-width: 600px) {
