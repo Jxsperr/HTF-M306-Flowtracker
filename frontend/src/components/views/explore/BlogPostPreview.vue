@@ -43,11 +43,8 @@
         flex-direction: column;
         align-items: start;
 
-        width: calc(33% - 2rem);
-        
         border-radius: var(--round);
         
-        margin: 1rem;
         padding: 2rem 3rem;
 
         box-shadow: var(--shadow-sm);
@@ -87,6 +84,8 @@
         margin-bottom: .5rem;
         font-size: 2rem;
         font-weight: bold;
+
+        color: var(--col-white);
     }
 
     button {
@@ -117,19 +116,7 @@
         box-shadow: var(--shadow-primary-lg);
     }
 
-    @media screen and (max-width: 1200px) {
-        .blogpostpreview {
-            width: calc(50% - 2rem)
-        }
-    }
-
     @media screen and (max-width: 700px) {
-        .blogpostpreview {
-            width: 100%;
-            margin-left: 0;
-            margin-right: 0;
-        }
-
         .blogpostpreview button {
             margin-top: 2rem;
         }

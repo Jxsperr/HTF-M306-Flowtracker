@@ -36,7 +36,7 @@ function setPostActive(post) {
         </header>
 
         <section class="posts">
-          <BlogPostPreview v-for="post of posts" :post="post" @click="setPostActive(post)"></BlogPostPreview>
+          <BlogPostPreview class="post" v-for="post of posts" :post="post" @click="setPostActive(post)"></BlogPostPreview>
         </section>
     </main>
 
@@ -47,9 +47,17 @@ function setPostActive(post) {
 
 <style scoped>
 .posts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: start;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+}
+.post {
+  grid-row-end: span 1;
+}
+
+.post:nth-child(10n + 1),
+.post:nth-child(10n + 7) {
+  grid-column-end: span 2;
 }
 </style>
