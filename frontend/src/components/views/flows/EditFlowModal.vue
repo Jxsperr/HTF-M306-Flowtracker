@@ -6,17 +6,7 @@
 
     import { ref } from 'vue'
 
-    const emotions = [
-        { id: 0, title: 'Joy', emoji: '😊' },
-        { id: 1, title: 'Sadness', emoji: '😔' },
-        { id: 2, title: 'Anger', emoji: '🤬' },
-        { id: 3, title: 'Anxiety', emoji: '😨' },
-        { id: 4, title: 'Love', emoji: '❤️' },
-        { id: 5, title: 'Surprise', emoji: '😮' },
-        { id: 6, title: 'Disgust', emoji: '🤢' },
-        { id: 7, title: 'Hope', emoji: '🤗' },
-        { id: 8, title: 'Anticipation', emoji: '🤔' }
-    ]
+    import { emotions } from '../../../mockData'
 
     const emits = defineEmits(['close', 'save'])
 

@@ -9,6 +9,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
+  --col-very-white: #fcfdfd;
   --col-white: #eff7f6; /* Mint cream */
   --col-white-transparent: #EFF7F6CC;
   --col-white-transparenter: #EFF7F688;

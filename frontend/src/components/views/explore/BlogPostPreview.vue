@@ -9,8 +9,10 @@
                 `linear-gradient(#0006, #0006), url(${lazyImage})`
                 : 'linear-gradient(#f60e67, #648767)'
             }">
-        <p class="title">{{ post.title }}</p>
-        <p class="date">{{ formatDate(post.dateCreated).split(',').splice(0, 2).join(',') }}</p>
+        <div>
+            <p class="title">{{ post.title }}</p>
+            <p class="date">{{ formatDate(post.dateCreated).split(',').splice(0, 2).join(',') }}</p>
+        </div>
 
         <button @click="toggleContent">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H6L3 14v2.5"></path><path d="M16 4h2l3 10v2.5"></path><path d="M10 16h4"></path><circle cx="17.5" cy="16.5" r="3.5"></circle><circle cx="6.5" cy="16.5" r="3.5"></circle></g></svg>
@@ -42,6 +44,7 @@
         display: flex;
         flex-direction: column;
         align-items: start;
+        justify-content: space-between;
 
         border-radius: var(--round);
         

@@ -62,10 +62,11 @@ function selectOption(option){
 
     .switcher button:hover {
         color: var(--col-white);
+        background-color: var(--col-primary-dark);
         box-shadow: var(--shadow-primary-md);
     }
 
     .switcher button:active {
-        background-color: var(--col-primary-dark);
+        background-color: var(--col-primary-darker);
     }
 </style>

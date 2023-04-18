@@ -1,126 +1,119 @@
-<template>
-    <div :class="{
-        small: props.size === 'small'
-    }">
-        <p class="emoji">{{ emotion.emoji }}</p>
-        <p v-if="props.size != 'small'" class="tooltip">{{ emotion.title }}</p>
-    </div>
-</template>
-
 <script setup>
-    const props = defineProps({
-        emotionId: Number,
-        size: {
-            type: String,
-            required: false,
-            default: "big"
-        }
-    })
+import { emotions } from "../../mockData";
 
-    const emotions = [
-        { id: 0, title: 'Joy', emoji: '😊' },
-        { id: 1, title: 'Sadness', emoji: '😔' },
-        { id: 2, title: 'Anger', emoji: '🤬' },
-        { id: 3, title: 'Anxiety', emoji: '😨' },
-        { id: 4, title: 'Love', emoji: '❤️' },
-        { id: 5, title: 'Surprise', emoji: '😮' },
-        { id: 6, title: 'Disgust', emoji: '🤢' },
-        { id: 7, title: 'Hope', emoji: '🤗' },
-        { id: 8, title: 'Anticipation', emoji: '🤔' }
-    ]
+const props = defineProps({
+  emotionId: Number,
+  size: {
+    type: String,
+    required: false,
+    default: "big",
+  },
+});
 
-    const emotion = emotions.find(e => e.id === props.emotionId)
+const emotion = emotions.find((e) => e.id === props.emotionId);
 </script>
 
+<template>
+  <div
+    :class="{
+      small: props.size === 'small',
+    }"
+  >
+    <p class="emoji">{{ emotion.emoji }}</p>
+    <p v-if="props.size != 'small'" class="tooltip">{{ emotion.title }}</p>
+  </div>
+</template>
+
 <style scoped>
-    div {
-        display: block;
-        position: relative;
-        user-select: none;
-        
-        margin-bottom: .4rem;
-    }
-    
-    div:is(:hover, :active){
-        z-index: 100;
-    }
-    
-    .emoji {
-        display: inline-block;
-        text-shadow: 2px 2px 4px var(--col-light-gray);
+div {
+  display: block;
+  position: relative;
+  user-select: none;
 
-        user-select: none;
+  margin-bottom: 0.4rem;
+}
 
-        line-height: 100%;
+div:is(:hover, :active) {
+  z-index: 100;
+}
 
-        margin: 0;
+.emoji {
+  display: inline-block;
+  text-shadow: 2px 2px 4px var(--col-light-gray);
 
-        rotate: 0;
+  user-select: none;
 
-        font-size: 3rem;
+  line-height: 100%;
 
-        transition: text-shadow var(--transition-time), rotate var(--transition-time), translate var(--transition-time);
-    }
+  margin: 0;
 
-    .emoji:is(:hover, :active) {
-        text-shadow: 4px 4px 8px var(--col-light-gray);
+  rotate: 0;
 
-        translate: -2px -2px;
+  font-size: 3rem;
 
-        rotate: 6deg;
-    }
+  transition: text-shadow var(--transition-time), rotate var(--transition-time),
+    translate var(--transition-time);
+}
 
-    .tooltip {
-        margin: 0;
+.emoji:is(:hover, :active) {
+  text-shadow: 4px 4px 8px var(--col-light-gray);
 
-        position: absolute;
-        bottom: -1rem;
-        left: 50%;
-        transform: translate(-50%, 100%);
+  translate: -2px -2px;
 
-        padding: 0.3rem 1rem;
-        border-radius: var(--round);
+  rotate: 6deg;
+}
 
-        background-color: var(--col-black);
-        color: var(--col-white);
+.tooltip {
+  margin: 0;
 
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity var(--transition-time);
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translate(-50%, 100%);
 
-        font-size: 1.1rem;
-        font-weight: 600;
-        letter-spacing: 0.1rem;
+  padding: 0.3rem 1rem;
+  border-radius: var(--round);
 
-        z-index: 2;
-    }
+  background-color: var(--col-black);
+  color: var(--col-white);
 
-    .emoji:is(:hover, :active) + .tooltip {
-        opacity: 1;
-        visibility: visible;
-        box-shadow: var(--shadow-sm);
-    }
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-time);
 
-    @media screen and (max-width: 400px) {
-        div:not(.small) .emoji {
-            font-size: 2.5rem;
-        }
-    }
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
 
-    @media screen and (max-width: 280px) {
-        div:not(.small) .emoji {
-            font-size: 2rem;
-        }
-    }
+  z-index: 2;
+}
 
-    div.small .emoji {
-        font-size: 2rem;
-        margin: 0;
-        margin-right: -.5rem;
-    }
+.emoji:is(:hover, :active) + .tooltip {
+  opacity: 1;
+  visibility: visible;
+  box-shadow: var(--shadow-sm);
+}
 
-    div.small .tooltip {
-        font-size: .8rem;
-        margin-top: .5rem;
-    }
+@media screen and (max-width: 400px) {
+  div:not(.small) .emoji {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  div:not(.small) .emoji {
+    font-size: 2rem;
+  }
+}
+
+div.small .emoji {
+  font-size: 2rem;
+  margin: 0;
+  margin-right: -0.5rem;
+}
+
+div.small .tooltip {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
 </style>

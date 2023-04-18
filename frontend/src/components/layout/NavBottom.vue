@@ -80,7 +80,7 @@ nav {
     padding: .5rem;
     padding-bottom: 2rem;
 
-    background-color: var(--col-white);
+    background-color: var(--col-very-white);
 
     box-shadow: var(--shadow-md);
 

@@ -1,6 +1,7 @@
 <script setup>
 import NavBottom from '../../layout/NavBottom.vue'
-import EmotionChart from './EmotionChart.vue'
+import RegularEmotionChart from './RegularEmotionChart.vue'
+import AverageEmotionChart from './AverageEmotionChart.vue'
 
 import { flows as flowData } from '../../../mockData'
 </script>
@@ -12,11 +13,20 @@ import { flows as flowData } from '../../../mockData'
             <h1>Statistics</h1>
         </header>
 
-        <EmotionChart :data="flowData" />
+        <section id="regular">
+            <RegularEmotionChart :data="flowData" />
+        </section>
+
+        <section id="average">
+            <AverageEmotionChart :data="flowData" />
+        </section>
     </main>
 
     <NavBottom activePage="statistics"></NavBottom>
 </template>
 
 <style scoped>
+#average {
+    margin-top: 6rem;
+}
 </style>
