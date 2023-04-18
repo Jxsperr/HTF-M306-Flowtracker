@@ -1,5 +1,14 @@
 <template>
-    <div class="blogpostpreview" :style="{ backgroundImage: post.image ? `linear-gradient(#0006, #0006), url(${lazyImage})` : 'linear-gradient(#f60e67, #648767)' }">
+    <div
+        :class="{
+            blogpostpreview: true,
+            read: props.post.read
+        }"
+        :style="{
+            backgroundImage: post.image ?
+                `linear-gradient(#0006, #0006), url(${lazyImage})`
+                : 'linear-gradient(#f60e67, #648767)'
+            }">
         <p class="title">{{ post.title }}</p>
         <p class="date">{{ formatDate(post.dateCreated).split(',').splice(0, 2).join(',') }}</p>
 
@@ -12,7 +21,7 @@
   
 <script setup>
     import { computed } from 'vue';
-    import { formatDate } from '../services/formatDate'
+    import { formatDate } from '../../../services/formatDate'
 
     const props = defineProps({
         post: {
@@ -51,6 +60,10 @@
         color: var(--col-white);
 
         transition: box-shadow var(--transition-time);
+    }
+
+    .blogpostpreview.read {
+        opacity: .5;
     }
 
     .blogpostpreview:hover {
@@ -110,11 +123,44 @@
         }
     }
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 700px) {
         .blogpostpreview {
             width: 100%;
             margin-left: 0;
             margin-right: 0;
+        }
+
+        .blogpostpreview button {
+            margin-top: 2rem;
+        }
+    }
+
+    @media screen and (max-width: 450px) {
+        .blogpostpreview {
+            padding: 1.8rem;
+        }
+
+        .title {
+            font-size: 1.8rem;
+        }
+    }
+
+    @media screen and (max-width: 330px) {
+        .blogpostpreview {
+            padding: 1.5rem;
+        }
+
+        .title {
+            font-size: 1.5rem;
+        }
+
+        .date {
+            font-size: 1rem;
+        }
+
+        .blogpostpreview button {
+            margin-top: 1.2rem;
+            padding: .4rem 1.2rem;
         }
     }
 </style>

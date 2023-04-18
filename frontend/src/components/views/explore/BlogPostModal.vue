@@ -27,9 +27,8 @@
 </template>
   
 <script setup>
-    import { defineEmits } from 'vue'
-    import { formatDate } from '../services/formatDate'
-    import LikeButton from './LikeButton.vue'
+    import { formatDate } from '../../../services/formatDate'
+    import LikeButton from '../../general/LikeButton.vue'
 
     const props = defineProps({
         post: {
@@ -58,9 +57,9 @@
 
         z-index: 200;
     }
+
     .background {
         position: fixed;
-        box-sizing: border-box;
 
         cursor: pointer;
 
@@ -81,7 +80,7 @@
         display: block;
         box-sizing: border-box;
 
-        margin: 1rem auto;
+        margin: 2rem auto;
 
         width: calc(100vw - 4rem);
         max-width: 800px;
@@ -145,9 +144,6 @@
         box-sizing: border-box;
 
         color: var(--col-white);
-
-        border-top-left-radius: var(--round);
-        border-top-right-radius: var(--round);
     }
 
     header .title {
@@ -191,6 +187,32 @@
             margin-top: 1rem;
         }
     }
+
+@media screen and (max-width: 450px) {
+    .post {
+        width: 100%;
+        margin: 0;
+
+        border-radius: 0;
+    }
+
+    .post .body {
+        margin-top: -2.5rem;
+        background-color: var(--col-white);
+        border-top-left-radius: var(--round);
+        border-top-right-radius: var(--round);
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .post .body {
+        padding: 1rem;
+    }
+
+    .title {
+        margin-top: 1rem;   
+    }
+}
 
 .content {
     transition: opacity 1s, scale 1s;

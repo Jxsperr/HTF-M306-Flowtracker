@@ -4,15 +4,15 @@
             <div class="emotionSelector">
                 <Emoji showLabel="true" showTooltip="false" @click="()=> toggleEmotion(emotion.id)" :class='{
                     "emotion": true,
-                    "selected": newEntry.selectedEmotions.includes(emotion.id)
+                    "selected": newFlow.emotions.includes(emotion.id)
                 }' v-for="emotion of emotions" :emotionId="emotion.id"></Emoji>
             </div>
 
-            <Input id="flowTitle" label="Title" v-model="newEntry.title" />
-            <Textarea id="flowDescription" label="Description" v-model="newEntry.description" />
+            <Input id="flowTitle" label="Title" v-model="newFlow.title" />
+            <Textarea id="flowDescription" label="Description" v-model="newFlow.description" />
 
             <div class="submitContainer">
-                <button @click="createEntry">
+                <button @click="createFlow">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                     <p>Create</p>
                 </button>
@@ -22,10 +22,10 @@
 </template>
 
 <script setup>
-    import Modal from './Modal.vue'
-    import Emoji from './Emoji.vue'
-    import Input from './Input.vue'
-    import Textarea from './Textarea.vue'
+    import Modal from '../general/Modal.vue'
+    import Emoji from '../general/Emoji.vue'
+    import Input from '../inputs/Input.vue'
+    import Textarea from '../inputs/Textarea.vue'
 
     import { ref } from 'vue'
 
@@ -41,31 +41,36 @@
             { id: 8, title: 'Anticipation', emoji: '🤔' }
         ]
 
-    const emits = defineEmits(['close'])
+    const emits = defineEmits(['close', 'addFlow'])
 
-    const newEntry = ref({
+    const newFlow = ref({
         title: '',
-        selectedEmotions: []
+        description: '',
+        emotions: []
     })
 
     function toggleEmotion(emotionId) {
-        if(newEntry.value.selectedEmotions.includes(emotionId)){
-            let idx = newEntry.value.selectedEmotions.findIndex(_id => _id == emotionId)
-            newEntry.value.selectedEmotions.splice(idx, 1)
+        if(newFlow.value.emotions.includes(emotionId)){
+            let idx = newFlow.value.emotions.findIndex(_id => _id == emotionId)
+            newFlow.value.emotions.splice(idx, 1)
         } else {
-            newEntry.value.selectedEmotions.push(emotionId)
+            newFlow.value.emotions.push(emotionId)
         }
     }
 
     function modalClosed(){
-        newEntry.value.selectedEmotions = []
-        newEntry.value.title = ''
-        
         emits('close')
     }
 
-    function createEntry(){
-        console.log(newEntry.value)
+    function createFlow(){
+        newFlow.value.dateCreated = new Date().toISOString()
+
+        // TODO: get new id from backend 
+        newFlow.value.id = Math.round(Math.random() * 1000) + 1000
+        
+        console.log('new flow', newFlow.value)
+
+        emits('addFlow', newFlow.value)
 
         modalClosed()
     }

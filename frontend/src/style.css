@@ -28,6 +28,10 @@
 
   --transition-time: .3s;
 
+  --shadow-inset-sm: inset 0 1px 3px rgba(49, 54, 56, 0.12), inset 0 1px 2px rgba(49, 54, 56, 0.24);
+  --shadow-inset-md: inset 0 10px 20px rgba(49, 54, 56, 0.19), inset 0 6px 6px rgba(49, 54, 56, 0.23);
+  --shadow-inset-lg: inset 0 19px 38px rgba(49, 54, 56, 0.30), inset 0 15px 12px rgba(49, 54, 56, 0.22);
+
   --shadow-sm: 0 1px 3px rgba(49, 54, 56, 0.12), 0 1px 2px rgba(49, 54, 56, 0.24);
   --shadow-md: 0 10px 20px rgba(49, 54, 56, 0.19), 0 6px 6px rgba(49, 54, 56, 0.23);
   --shadow-lg: 0 19px 38px rgba(49, 54, 56, 0.30), 0 15px 12px rgba(49, 54, 56, 0.22);
@@ -56,10 +60,11 @@ body {
 
 *, input, textarea, button {
   font-family: 'Karla', sans-serif;
+  word-break: break-word;
 }
 
 main {
-  max-width: 800px;
+  max-width: 1400px;
   padding: 4rem 2rem 8rem 2rem;
   margin: auto;
 }
@@ -69,12 +74,6 @@ main>header:first-of-type {
   align-items: center;
   display: flex;
   flex-direction: column;
-}
-
-@media screen and (max-width: 800px) {
-  main>header:first-of-type {
-    margin-bottom: 1rem;
-  }
 }
 
 main>header:first-of-type .icon {
@@ -245,7 +244,17 @@ button.tertiary:active {
   background-color: var(--col-light-gray);
 }
 
+@media screen and (max-width: 800px) {
+  main>header:first-of-type {
+    margin-bottom: 1rem;
+  }
+}
+
 @media screen and (max-width: 450px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
   p {
     font-size: 1.2rem;
   }

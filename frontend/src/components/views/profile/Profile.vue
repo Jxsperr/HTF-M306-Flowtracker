@@ -1,5 +1,5 @@
 <script setup>
-import NavBottom from './NavBottom.vue'
+import NavBottom from '../../layout/NavBottom.vue'
 </script>
 
 <template>

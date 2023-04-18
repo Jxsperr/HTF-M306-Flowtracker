@@ -42,4 +42,8 @@
         color: var(--col-white);
         box-shadow: var(--shadow-primary-md);
     }
+
+    button:active {
+        background-color: var(--col-primary-dark);
+    }
 </style>

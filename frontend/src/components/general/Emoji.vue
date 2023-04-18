@@ -1,13 +1,20 @@
 <template>
-    <div>
+    <div :class="{
+        small: props.size === 'small'
+    }">
         <p class="emoji">{{ emotion.emoji }}</p>
-        <p class="tooltip">{{ emotion.title }}</p>
+        <p v-if="props.size != 'small'" class="tooltip">{{ emotion.title }}</p>
     </div>
 </template>
 
 <script setup>
     const props = defineProps({
-        emotionId: Number
+        emotionId: Number,
+        size: {
+            type: String,
+            required: false,
+            default: "big"
+        }
     })
 
     const emotions = [
@@ -95,14 +102,25 @@
     }
 
     @media screen and (max-width: 400px) {
-        .emoji {
+        div:not(.small) .emoji {
             font-size: 2.5rem;
         }
     }
 
     @media screen and (max-width: 280px) {
-        .emoji {
+        div:not(.small) .emoji {
             font-size: 2rem;
         }
+    }
+
+    div.small .emoji {
+        font-size: 2rem;
+        margin: 0;
+        margin-right: -.5rem;
+    }
+
+    div.small .tooltip {
+        font-size: .8rem;
+        margin-top: .5rem;
     }
 </style>

@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 import './style.css'
 import AppComponent from './App.vue'
-import Diary from "./components/Diary.vue"
-import Statistics from "./components/Statistics.vue"
-import Explore from "./components/Explore.vue"
-import Profile from "./components/Profile.vue"
+import Flows from "./components/views/flows/Flows.vue"
+import Statistics from "./components/views/statistics/Statistics.vue"
+import Explore from "./components/views/explore/Explore.vue"
+import Profile from "./components/views/profile/Profile.vue"
 
 import { createRouter, createWebHistory } from 'vue-router'
 import VueLazyload from 'vue-lazyload'
@@ -16,7 +16,7 @@ const router = createRouter({
             path: '/explore', component: Explore
         },
         {
-            path: '/', component: Diary
+            path: '/', component: Flows
         },
         {
             path: '/statistics', component: Statistics

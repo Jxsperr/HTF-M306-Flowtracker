@@ -12,9 +12,9 @@
         <router-link to="/">
             <button :class='{
                 "tertiary": true,
-                "active": activePage==="diary"
+                "active": activePage==="flows"
             }'>
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m3 0v18"></path><path d="M13 8h2"></path><path d="M13 12h2"></path></g></svg>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><path d="M21 12h-2c-.894 0-1.662-.857-1.761-2c-.296-3.45-.749-6-2.749-6s-2.5 3.582-2.5 8s-.5 8-2.5 8s-2.452-2.547-2.749-6c-.1-1.147-.867-2-1.763-2h-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </button>
         </router-link>
 
@@ -41,7 +41,7 @@
         </router-link>
     </nav>
 
-    <NewFlowModal v-if="newFlowModalShown" @close="newFlowModalShown = false" />
+    <NewFlowModal v-if="newFlowModalShown" @close="newFlowModalShown = false" @addFlow="addFlow" />
 </template>
 
 <script setup>
@@ -50,12 +50,18 @@ import { ref } from 'vue'
 
 import NewFlowModal from './NewFlowModal.vue'
 
+const emits = defineEmits(['addFlow'])
+
 const props = defineProps({
     activePage: String
 })
 
 const activePage = ref(props.activePage)
 const newFlowModalShown = ref(false)
+
+function addFlow(flow){
+    emits('addFlow', flow)
+}
 </script>
 
 <style scoped>
