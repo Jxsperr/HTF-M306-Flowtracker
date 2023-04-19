@@ -11,6 +11,7 @@ import NavBottom from '../../layout/NavBottom.vue'
 import { monthNames } from '../../../services/formatDate'
 import { ref } from 'vue';
 import { flows as flowData } from '../../../mockData'
+import DateSwitcher from '../../inputs/DateSwitcher.vue'
 
 const activeFlow = ref(null)
 const flows = ref([])
@@ -22,28 +23,7 @@ const flowForEdit = ref(null)
 
 const editModalData = ref(null)
 
-function groupFlowsByMonth(flows) {
-  const groupedFlows = {}
-
-  flows.forEach(flow => {
-    const date = new Date(flow.dateCreated)
-    const month = monthNames[date.getMonth()]
-    const year = date.getFullYear()
-    const key = `${month} ${year}`
-
-    if (!groupedFlows[key]) {
-      groupedFlows[key] = []
-    }
-
-    groupedFlows[key].push(flow)
-
-    groupedFlows[key].sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated))
-  })
-
-  return groupedFlows
-}
-
-flows.value = groupFlowsByMonth(flows.value)
+const displayedFlows = ref([])
 
 function cancelRemoveFlow() {
   flowForRemoval.value = null
@@ -139,21 +119,20 @@ function addFlow(flow){
 <template>
     <main>
         <header>
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><path d="M21 12h-2c-.894 0-1.662-.857-1.761-2c-.296-3.45-.749-6-2.749-6s-2.5 3.582-2.5 8s-.5 8-2.5 8s-2.452-2.547-2.749-6c-.1-1.147-.867-2-1.763-2h-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M9 10h.01"></path><path d="M15 10h.01"></path><path d="M9.5 15a3.5 3.5 0 0 0 5 0"></path></g></svg>
           <h1>Flows</h1>
         </header>
+        
+        <!-- <DateSwitcher :dates="flows.map(flow => flow.dateCreated)" /> -->
+        <DateSwitcher :dates='["2023-04-11T14:30:00", "2022-07-02T14:00:00", "2022-11-14T16:00:00"]' />
 
-        <section class="group" v-for="(group, date) in flows" :key="date.replace(' ', '-')">
-            <h2>{{ date.split(' ')[0] }}<span class="year">{{ date.split(' ')[1] }}</span></h2>
-
-            <div class="flows">
+        <div class="flows">
               <FlowPreview
-              v-for="flow of group"
+              v-for="flow of displayedFlows"
               :key="date.replace(' ', '-') + flow.id"
               :flow="flow"
               @click="activeFlow = flow" />
             </div>
-        </section>
     </main>
 
     <FlowModal
@@ -188,17 +167,29 @@ function addFlow(flow){
   }
   
   .flows {
-      width: 100%;
-      display: flex;
-      box-sizing: border-box;
-      flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 100%;
+    display: grid;
 
-      justify-content: space-between;
-      align-items: flex-start;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
   }
 
   h2 .year {
     margin-left: 1rem;
     color: var(--col-dark-gray);
+  }
+
+  @media screen and (max-width: 850px) {
+    .flows {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .flows {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

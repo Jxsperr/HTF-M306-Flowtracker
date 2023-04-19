@@ -52,12 +52,32 @@ function setPostActive(post) {
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
 }
-.post {
-  grid-row-end: span 1;
-}
 
 .post:nth-child(10n + 1),
 .post:nth-child(10n + 7) {
   grid-column-end: span 2;
+}
+
+@media screen and (max-width: 1100px) {
+  .posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .post:nth-child(10n + 1),
+  .post:nth-child(10n + 7) {
+    grid-column-end: span 1;
+    grid-row-end: span 2;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .posts {
+    grid-template-columns: 1fr;
+  }
+  
+  .post:nth-child(10n + 1),
+  .post:nth-child(10n + 7) {
+    grid-row-end: span 1;
+  }
 }
 </style>

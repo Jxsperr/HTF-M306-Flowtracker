@@ -38,7 +38,6 @@ div:is(:hover, :active) {
 }
 
 .emoji {
-  display: inline-block;
   text-shadow: 2px 2px 4px var(--col-light-gray);
 
   user-select: none;
@@ -65,6 +64,8 @@ div:is(:hover, :active) {
 
 .tooltip {
   margin: 0;
+
+  word-break: keep-all;
 
   position: absolute;
   bottom: -1rem;

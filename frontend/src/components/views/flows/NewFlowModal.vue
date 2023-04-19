@@ -22,10 +22,10 @@
 </template>
 
 <script setup>
-    import Modal from '../general/Modal.vue'
-    import Emoji from '../general/Emoji.vue'
-    import Input from '../inputs/Input.vue'
-    import Textarea from '../inputs/Textarea.vue'
+    import Modal from '../../general/Modal.vue'
+    import Emoji from '../../general/Emoji.vue'
+    import Input from '../../inputs/Input.vue'
+    import Textarea from '../../inputs/Textarea.vue'
 
     import { ref } from 'vue'
 

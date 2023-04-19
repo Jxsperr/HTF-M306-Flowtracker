@@ -698,7 +698,7 @@ Others find its lack of doctrine or formal structure confusing and difficult to 
 
 Despite these criticisms, Zen Buddhism remains a popular and influential spiritual practice, offering valuable insights and techniques for navigating the complexities of modern life.`,
     likeCount: 34,
-    read: true,
+    read: false,
   },
   {
     id: 1,
@@ -804,7 +804,7 @@ In our increasingly urbanized world, birdsong serves as a vital reminder of our 
 
 In conclusion, the symphony of birdsong offers us a unique opportunity to reconnect with nature, appreciate its beauty, and experience the profound impact it can have on our well-being. By immersing ourselves in nature's music, we can cultivate a deeper connection to the world around us and contribute to the preservation of this incredible natural resource for generations to come.`,
     likeCount: 38,
-    read: true,
+    read: false,
   },
   {
     id: 8,
@@ -907,15 +907,15 @@ Seek out new experiences: Challenge yourself to step outside your comfort zone a
 
 In conclusion, the concept of the multiverse can serve as a powerful source of inspiration and motivation, encouraging us to dream big, take risks, and embrace the infinite possibilities of our existence. By adopting a multiverse mindset and exploring the vastness of our cosmic reality, we can unlock our full potential and chart a course toward a future filled with adventure, discovery, and personal growth.`,
     likeCount: 52,
-    read: true,
-    },
-    {
-      id: 13,
-      image: "time_travel_paradoxes.jpg",
-      dateCreated: "2023-08-01T14:25:00",
-      title: "Time Travel Paradoxes: Unraveling the Mysteries of Temporal Manipulation",
-      content: `Time travel has been a captivating concept for centuries, sparking the imagination of countless authors, filmmakers, and dreamers alike. The idea of traveling backward or forward in time to explore the past or witness the future offers endless possibilities and raises many intriguing questions. However, the concept of time travel is riddled with paradoxes that challenge our understanding of the fundamental nature of time and reality. In this blog post, we'll delve into the mysteries of time travel paradoxes and consider their implications for our understanding of the universe.
-      
+    read: false,
+  },
+  {
+    id: 13,
+    image: "time_travel_paradoxes.jpg",
+    dateCreated: "2023-08-01T14:25:00",
+    title: "Time Travel Paradoxes: Unraveling the Mysteries of Temporal Manipulation",
+    content: `Time travel has been a captivating concept for centuries, sparking the imagination of countless authors, filmmakers, and dreamers alike. The idea of traveling backward or forward in time to explore the past or witness the future offers endless possibilities and raises many intriguing questions. However, the concept of time travel is riddled with paradoxes that challenge our understanding of the fundamental nature of time and reality. In this blog post, we'll delve into the mysteries of time travel paradoxes and consider their implications for our understanding of the universe.
+    
 One of the most famous time travel paradoxes is known as the "grandfather paradox." This thought experiment asks what would happen if you traveled back in time and accidentally caused the death of your grandfather before your parent was born. This would seemingly prevent your own existence, creating a paradox as you could not have traveled back in time in the first place. The grandfather paradox raises questions about the nature of causality, free will, and the possibility of altering the past.
 
 Another well-known paradox is the "bootstrap paradox," which involves an object or piece of information that is sent back in time, creating a circular loop with no discernible origin. For example, imagine a scientist who receives a mysterious blueprint for a groundbreaking invention from her future self. She builds the device using the blueprint, and later in her life, she sends the blueprint back in time to her younger self. The paradox lies in the fact that the blueprint has no apparent origin, as it exists in a continuous loop through time.
@@ -931,16 +931,16 @@ Engage in thought experiments: Entertain hypothetical scenarios involving time t
 Foster a sense of wonder: Embrace the mysteries of the universe and cultivate a sense of awe and curiosity. This attitude can foster a lifelong love of learning and discovery, empowering you to explore the unknown with enthusiasm and resilience.
 
 In conclusion, time travel paradoxes offer a fascinating glimpse into the complexities of the universe and the enigmatic nature of time itself. By embracing the mysteries of temporal manipulation and exploring the paradoxes that arise from it, we can expand our understanding of reality, sharpen our critical thinking skills, and ignite our imaginations to create a more meaningful and adventurous life.`,
-      likeCount: 47,
-      read: false,
-      },
-      {
-        id: 14,
-        image: "the_power_of_play.jpg",
-        dateCreated: "2023-08-15T12:35:00",
-        title: "The Power of Play: Rediscovering Joy and Creativity in Everyday Life",
-        content: `As children, we instinctively understood the value of play - a carefree, joyful exploration of the world around us, driven by curiosity and imagination. Play was not only fun but also an essential part of our cognitive, emotional, and social development. However, as we grow older, we often lose touch with our playful nature, becoming preoccupied with work, responsibilities, and the pressures of adulthood. In this blog post, we'll explore the importance of play for adults and share practical tips for incorporating play into your everyday life.
-        
+    likeCount: 47,
+    read: false,
+  },
+  {
+    id: 14,
+    image: "the_power_of_play.jpg",
+    dateCreated: "2023-08-15T12:35:00",
+    title: "The Power of Play: Rediscovering Joy and Creativity in Everyday Life",
+    content: `As children, we instinctively understood the value of play - a carefree, joyful exploration of the world around us, driven by curiosity and imagination. Play was not only fun but also an essential part of our cognitive, emotional, and social development. However, as we grow older, we often lose touch with our playful nature, becoming preoccupied with work, responsibilities, and the pressures of adulthood. In this blog post, we'll explore the importance of play for adults and share practical tips for incorporating play into your everyday life.
+    
 Numerous studies have shown that play is not just for children - it offers a wealth of benefits for adults as well. Engaging in play can reduce stress, improve cognitive function, enhance creativity, and promote overall well-being. Here are some reasons why play is essential for adults:
 
 Stress Relief: Play provides an outlet for stress and tension, allowing us to let go of our worries and immerse ourselves in the present moment. Engaging in playful activities can release endorphins, the body's natural feel-good chemicals, leading to a sense of relaxation and well-being.
@@ -962,93 +962,93 @@ Explore your interests: Pursue hobbies and activities that spark your curiosity 
 Connect with others: Invite friends or family members to join you in playful activities, fostering shared experiences and social connections.
 
 In conclusion, reconnecting with our playful nature can enhance our well-being, boost creativity, and strengthen relationships, helping us lead happier, more fulfilling lives. By prioritizing play and making it a regular part of our daily routines, we can rediscover the joy, wonder, and endless possibilities that life has to offer.`,
-        likeCount: 54,
-        read: false,
-        },
-        {
-          id: 15,
-          image: "dance_of_nature.jpg",
-          dateCreated: "2023-08-20T17:30:00",
-          title: "Poem: Dance of Nature",
-          content:
-          "In the forest's hidden glade,\nNature's orchestra is played,\nLeaves and branches gently sway,\nTo the rhythm of the day.\n\nSunlight dapples through the trees,\nAs the earth begins to breathe,\nFlowers bloom in colors bright,\nDancing in the golden light.\n\nCreatures great and creatures small,\nJoin the dance, both one and all,\nIn this symphony of life,\nHarmony prevails, despite strife.\n\nIn the dance of nature, see,\nA reflection of you and me,\nFor we too, are part of this,\nEternal, graceful, nature's bliss.",
-          likeCount: 61,
-          read: false,
-          },
-          {
-            id: 16,
-            image: "journey_within.jpg",
-            dateCreated: "2023-08-25T15:45:00",
-            title: "Poem: Journey Within",
-            content:
-            "A journey deep, a journey long,\nTo find the place where we belong,\nWithin the heart, the soul, the mind,\nThe answers that we seek to find.\n\nThrough shadowed paths and memories,\nWe navigate life's stormy seas,\nDiscovering along the way,\nThe truth that guides us, day by day.\n\nOur inner compass, strong and true,\nLeads us to a love that's due,\nFor self, for others, and for life,\nWe find our strength amid the strife.\n\nIn the end, the journey's end,\nA message, clear, we comprehend,\nThe love we sought was always there,\nA beacon, shining, ever fair.",
-            likeCount: 47,
-            read: false,
-            },
-            {
-              id: 17,
-              image: "stars_above.jpg",
-              dateCreated: "2023-08-30T20:00:00",
-              title: "Poem: Stars Above",
-              content:
-              "When twilight's veil descends at last,\nAnd day's cacophony has passed,\nThe night sky opens wide, revealing,\nCountless stars, their light appealing.\n\nGazing up at heaven's expanse,\nI ponder life's eternal dance,\nThe cosmic waltz of suns and worlds,\nInfinite beauty, space unfurls.\n\nEach shining point, a distant fire,\nIgnites within, a deep desire,\nTo learn the secrets they conceal,\nThe mysteries of the cosmos' reel.\n\nAnd as I watch the stars above,\nI'm filled with wonder, awe, and love,\nFor in their light, I come to see,\nThe boundless possibilities.",
-              likeCount: 52,
-              read: false,
-              },
-              {
-              id: 21,
-              image: "power_of_kindness.jpg",
-              dateCreated: "2023-09-05T10:15:00",
-              title: "The Power of Kindness: Small Acts, Big Impact",
-              content: `Kindness is a powerful force that can transform lives and create positive ripple effects. Even small acts of kindness can brighten someone's day and promote a sense of community. Research shows that being kind can improve our mood, boost self-esteem, and strengthen relationships. Start by practicing daily acts of kindness, such as offering a genuine compliment, lending a helping hand, or listening with empathy. Remember, kindness is contagious — so spread it far and wide!`,
-              likeCount: 27,
-              read: true,
-              },
-              {
-              id: 22,
-              image: "morning_routine.jpg",
-              dateCreated: "2023-09-10T08:30:00",
-              title: "Morning Routine: Start Your Day Right",
-              content: `A solid morning routine sets the tone for a productive and successful day. Create a personalized routine that works for you and includes activities that energize and inspire you. Consider incorporating mindfulness practices, physical exercise, or goal setting. Experiment with different routines to find what works best for you, and be consistent to experience the full benefits. A well-crafted morning routine can lead to increased focus, motivation, and overall well-being.`,
-              likeCount: 34,
-              read: false,
-              },
-              {
-              id: 23,
-              image: "disconnect_to_reconnect.jpg",
-              dateCreated: "2023-09-15T18:00:00",
-              title: "Disconnect to Reconnect: Unplugging for Better Connection",
-              content: `In our always-connected world, it's important to make time for disconnection. Taking breaks from technology can help reduce stress, improve focus, and foster deeper connections with ourselves and others. Schedule regular tech-free time, such as a daily walk without your phone or a weekend getaway without screens. Use this time to engage in hobbies, spend quality time with loved ones, or practice self-care. Embrace the power of disconnection to recharge and reconnect with what truly matters.`,
-              likeCount: 42,
-              read: false,
-              },
-              {
-              id: 24,
-              image: "practice_gratitude.jpg",
-              dateCreated: "2023-09-20T09:45:00",
-              title: "Practice Gratitude: Unlock the Benefits",
-              content: `Gratitude is a powerful practice with numerous physical and psychological benefits. By focusing on the positive aspects of our lives, we cultivate a greater sense of well-being and happiness. Start by keeping a daily gratitude journal, listing three things you're grateful for each day. You can also express gratitude to others through kind words or gestures. Remember, gratitude is a skill that can be developed – the more you practice, the more benefits you'll reap.`,
-              likeCount: 39,
-              read: false,
-              },
-              {
-              id: 25,
-              image: "declutter_your_life.jpg",
-              dateCreated: "2023-09-25T17:30:00",
-              title: "Declutter Your Life: Clearing Space for Growth",
-              content: `Decluttering is about more than just tidying up — it's a way to create space for personal growth and new opportunities. Start by tackling physical clutter in your home or workspace, then move on to digital clutter such as old files and emails. Don't forget to address mental clutter as well, by letting go of negative thoughts or limiting beliefs. As you declutter, you'll likelyexperience increased focus, reduced stress, and a greater sense of control over your life. Embrace the process and enjoy the benefits of a more organized and intentional existence.`,
-              likeCount: 48,
-              read: true,
-              },
-              {
-              id: 26,
-              image: "embrace_imperfection.jpg",
-              dateCreated: "2023-09-30T14:00:00",
-              title: "Embrace Imperfection: Letting Go of Perfectionism",
-              content: `Perfectionism can hold us back from reaching our full potential and enjoying life. Learning to embrace imperfection can lead to increased self-acceptance, creativity, and resilience. Start by setting realistic expectations for yourself, and practice self-compassion when things don't go as planned. Remember that mistakes and imperfections are natural and can be valuable learning experiences. As you let go of perfectionism, you'll find greater freedom and fulfillment in your personal and professional life.`,
-              likeCount: 37,
-              read: false,
-              }
+    likeCount: 54,
+    read: false,
+  },
+  {
+    id: 15,
+    image: "dance_of_nature.jpg",
+    dateCreated: "2023-08-20T17:30:00",
+    title: "Poem: Dance of Nature",
+    content:
+    "In the forest's hidden glade,\nNature's orchestra is played,\nLeaves and branches gently sway,\nTo the rhythm of the day.\n\nSunlight dapples through the trees,\nAs the earth begins to breathe,\nFlowers bloom in colors bright,\nDancing in the golden light.\n\nCreatures great and creatures small,\nJoin the dance, both one and all,\nIn this symphony of life,\nHarmony prevails, despite strife.\n\nIn the dance of nature, see,\nA reflection of you and me,\nFor we too, are part of this,\nEternal, graceful, nature's bliss.",
+    likeCount: 61,
+    read: false,
+  },
+  {
+    id: 16,
+    image: "journey_within.jpg",
+    dateCreated: "2023-08-25T15:45:00",
+    title: "Poem: Journey Within",
+    content:
+    "A journey deep, a journey long,\nTo find the place where we belong,\nWithin the heart, the soul, the mind,\nThe answers that we seek to find.\n\nThrough shadowed paths and memories,\nWe navigate life's stormy seas,\nDiscovering along the way,\nThe truth that guides us, day by day.\n\nOur inner compass, strong and true,\nLeads us to a love that's due,\nFor self, for others, and for life,\nWe find our strength amid the strife.\n\nIn the end, the journey's end,\nA message, clear, we comprehend,\nThe love we sought was always there,\nA beacon, shining, ever fair.",
+    likeCount: 47,
+    read: false,
+  },
+  {
+    id: 17,
+    image: "stars_above.jpg",
+    dateCreated: "2023-08-30T20:00:00",
+    title: "Poem: Stars Above",
+    content:
+    "When twilight's veil descends at last,\nAnd day's cacophony has passed,\nThe night sky opens wide, revealing,\nCountless stars, their light appealing.\n\nGazing up at heaven's expanse,\nI ponder life's eternal dance,\nThe cosmic waltz of suns and worlds,\nInfinite beauty, space unfurls.\n\nEach shining point, a distant fire,\nIgnites within, a deep desire,\nTo learn the secrets they conceal,\nThe mysteries of the cosmos' reel.\n\nAnd as I watch the stars above,\nI'm filled with wonder, awe, and love,\nFor in their light, I come to see,\nThe boundless possibilities.",
+    likeCount: 52,
+    read: false,
+  },
+  {
+    id: 21,
+    image: "power_of_kindness.jpg",
+    dateCreated: "2023-09-05T10:15:00",
+    title: "The Power of Kindness: Small Acts, Big Impact",
+    content: `Kindness is a powerful force that can transform lives and create positive ripple effects. Even small acts of kindness can brighten someone's day and promote a sense of community. Research shows that being kind can improve our mood, boost self-esteem, and strengthen relationships. Start by practicing daily acts of kindness, such as offering a genuine compliment, lending a helping hand, or listening with empathy. Remember, kindness is contagious — so spread it far and wide!`,
+    likeCount: 27,
+    read: false,
+  },
+  {
+    id: 22,
+    image: "morning_routine.jpg",
+    dateCreated: "2023-09-10T08:30:00",
+    title: "Morning Routine: Start Your Day Right",
+    content: `A solid morning routine sets the tone for a productive and successful day. Create a personalized routine that works for you and includes activities that energize and inspire you. Consider incorporating mindfulness practices, physical exercise, or goal setting. Experiment with different routines to find what works best for you, and be consistent to experience the full benefits. A well-crafted morning routine can lead to increased focus, motivation, and overall well-being.`,
+    likeCount: 34,
+    read: false,
+  },
+  {
+    id: 23,
+    image: "disconnect_to_reconnect.jpg",
+    dateCreated: "2023-09-15T18:00:00",
+    title: "Disconnect to Reconnect: Unplugging for Better Connection",
+    content: `In our always-connected world, it's important to make time for disconnection. Taking breaks from technology can help reduce stress, improve focus, and foster deeper connections with ourselves and others. Schedule regular tech-free time, such as a daily walk without your phone or a weekend getaway without screens. Use this time to engage in hobbies, spend quality time with loved ones, or practice self-care. Embrace the power of disconnection to recharge and reconnect with what truly matters.`,
+    likeCount: 42,
+    read: false,
+  },
+  {
+    id: 24,
+    image: "practice_gratitude.jpg",
+    dateCreated: "2023-09-20T09:45:00",
+    title: "Practice Gratitude: Unlock the Benefits",
+    content: `Gratitude is a powerful practice with numerous physical and psychological benefits. By focusing on the positive aspects of our lives, we cultivate a greater sense of well-being and happiness. Start by keeping a daily gratitude journal, listing three things you're grateful for each day. You can also express gratitude to others through kind words or gestures. Remember, gratitude is a skill that can be developed – the more you practice, the more benefits you'll reap.`,
+    likeCount: 39,
+    read: false,
+  },
+  {
+    id: 25,
+    image: "declutter_your_life.jpg",
+    dateCreated: "2023-09-25T17:30:00",
+    title: "Declutter Your Life: Clearing Space for Growth",
+    content: `Decluttering is about more than just tidying up — it's a way to create space for personal growth and new opportunities. Start by tackling physical clutter in your home or workspace, then move on to digital clutter such as old files and emails. Don't forget to address mental clutter as well, by letting go of negative thoughts or limiting beliefs. As you declutter, you'll likelyexperience increased focus, reduced stress, and a greater sense of control over your life. Embrace the process and enjoy the benefits of a more organized and intentional existence.`,
+    likeCount: 48,
+    read: false,
+  },
+  {
+    id: 26,
+    image: "embrace_imperfection.jpg",
+    dateCreated: "2023-09-30T14:00:00",
+    title: "Embrace Imperfection: Letting Go of Perfectionism",
+    content: `Perfectionism can hold us back from reaching our full potential and enjoying life. Learning to embrace imperfection can lead to increased self-acceptance, creativity, and resilience. Start by setting realistic expectations for yourself, and practice self-compassion when things don't go as planned. Remember that mistakes and imperfections are natural and can be valuable learning experiences. As you let go of perfectionism, you'll find greater freedom and fulfillment in your personal and professional life.`,
+    likeCount: 37,
+    read: false,
+  }
 ]
 
 export { emotions, flows, posts }

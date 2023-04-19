@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const props = defineProps({
     options: {
@@ -11,31 +11,41 @@ const props = defineProps({
 const optionsRef = ref(props.options)
 const selectedOption = ref(null)
 
-if(optionsRef.value.some(_option => _option.selected))
-    selectedOption.value = optionsRef.value.find(_option => _option.selected)
+const emits = defineEmits(['update-option'])
 
-function selectOption(event) {
-  const selectedLabel = event.target.value
-  const selectedOption = optionsRef.value.find((option) => option.label === selectedLabel)
+watch(
+  () => props.options,
+  (newOptions) => {
+    optionsRef.value = newOptions;
+    selectedOption.value = newOptions.find(_option => _option.selected) || newOptions[0];
+  },
+  { immediate: true }
+)
 
-  if (selectedOption) {
+function selectOption(newOptionValue) {
+  const newSelectedOption = optionsRef.value.find(option => option.label == newOptionValue)
+
+  if (newSelectedOption) {
     if (selectedOption.value) selectedOption.value.selected = false
 
-    selectedOption.value = selectedOption
+    selectedOption.value = newSelectedOption
     selectedOption.selected = true
 
-    selectedOption.onSelected()
+    if(selectedOption.onSelected) selectedOption.onSelected()
   }
+
+  emits('update-option', newOptionValue)
 }
 </script>
 
 <template>
-    <select @change="selectOption($event)">
-        <option v-for="option in optionsRef" :value="option.label">
+    <select @change="selectOption($event.target.value)" :value="selectedOption ? selectedOption.label : ''">
+        <option v-for="option in optionsRef" :value="option.value || option.label">
             {{ option.label }}
         </option>
     </select>
 </template>
+
 
 <style>
 select {

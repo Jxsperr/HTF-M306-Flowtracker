@@ -40,13 +40,25 @@ const chartOptions = {
   maintainAspectRatio: false,
   scales: {
     y: {
+      offset: true,
       stacked: true,
       min: 0,
       max: 100,
       ticks: {
-        stepSize: 8,
+        stepSize: 10,
         precision: 0,
-        callback: (value) => `${value}%`
+        callback: value => `${value}%`
+      }
+    }
+  },
+  plugins: {
+    tooltip: {
+      callbacks: {
+        label: context => {
+          const label = context.dataset.label || ""
+          const value = context.parsed.y;
+          return `${label}: ${value.toFixed(2)}%`
+        }
       }
     }
   }
@@ -141,6 +153,7 @@ setTimeframe("1w")
       :key="JSON.stringify(chartData) + JSON.stringify(chartOptions)"
       :chartData="chartData"
       :options="chartOptions"
+      :height="600"
     ></line-chart>
   </div>
 </template>

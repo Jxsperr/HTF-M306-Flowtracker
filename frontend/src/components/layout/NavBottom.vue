@@ -14,7 +14,7 @@
                 "tertiary": true,
                 "active": activePage==="flows"
             }'>
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><path d="M21 12h-2c-.894 0-1.662-.857-1.761-2c-.296-3.45-.749-6-2.749-6s-2.5 3.582-2.5 8s-.5 8-2.5 8s-2.452-2.547-2.749-6c-.1-1.147-.867-2-1.763-2h-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M9 10h.01"></path><path d="M15 10h.01"></path><path d="M9.5 15a3.5 3.5 0 0 0 5 0"></path></g></svg>
             </button>
         </router-link>
 
@@ -48,7 +48,7 @@
 import { RouterLink } from 'vue-router'
 import { ref } from 'vue'
 
-import NewFlowModal from './NewFlowModal.vue'
+import NewFlowModal from '../views/flows/NewFlowModal.vue'
 
 const emits = defineEmits(['addFlow'])
 

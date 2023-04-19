@@ -45,9 +45,8 @@
         background-color: var(--col-very-light-gray);
 
         border-radius: var(--round);
-        margin: 1rem;
 
-        width: calc(33% - 2rem);
+        width: 100%;
 
         padding: 2rem;
         box-shadow: var(--shadow-sm);
@@ -134,31 +133,8 @@
     }
 
     @media screen and (max-width: 500px) {
-        .bottom {
-            flex-direction: column;
-        }
-
         .date {
             align-self: start;
-        }
-
-        .buttons {
-            align-self: flex-end;
-            margin-top: 1rem;
-        }
-    }
-
-    @media screen and (max-width: 1200px) {
-        .flowpreview {
-            width: calc(50% - 2rem)
-        }
-    }
-
-    @media screen and (max-width: 800px) {
-        .flowpreview {
-            width: 100%;
-            margin-left: 0;
-            margin-right: 0;
         }
     }
 </style>

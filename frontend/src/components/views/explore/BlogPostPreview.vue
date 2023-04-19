@@ -59,7 +59,7 @@
 
         color: var(--col-white);
 
-        transition: box-shadow var(--transition-time);
+        transition: box-shadow var(--transition-time), opacity var(--transition-time);
     }
 
     .blogpostpreview.read {

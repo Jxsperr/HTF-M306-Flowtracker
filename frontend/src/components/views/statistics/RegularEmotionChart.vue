@@ -1,17 +1,3 @@
-<template>
-  <div>
-    <header>
-      <h2>Your emotions over&nbsp;</h2>
-      <TextSwitcher class="switcher" :options="switcherOptions" />
-    </header>
-    <line-chart
-      :key="JSON.stringify(chartData) + JSON.stringify(chartOptions)"
-      :chartData="chartData"
-      :options="chartOptions"
-    ></line-chart>
-  </div>
-</template>
-
 <script setup>
   import TextSwitcher from "../../inputs/TextSwitcher.vue"
   import { ref } from "vue"
@@ -57,9 +43,22 @@
     maintainAspectRatio: false,
     scales: {
       y: {
+        offset: true,
         ticks: {
           stepSize: 1,
-          precision: 0
+          precision: 0,
+          callback: value => `${value} entr${value === 1 ? 'y' : 'ies'}`
+        }
+      }
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: context => {
+            const label = context.dataset.label || ""
+            const value = context.parsed.y
+            return `${label}: ${value} entr${value === 1 ? 'y' : 'ies'}`
+          }
         }
       }
     }
@@ -133,13 +132,28 @@
         pointRadius: 2,
         data: emotionsCount[i],
         fill: false,
-        tension: .5
+        tension: 0.35
       }))
     }
   }
 
   setTimeframe("all")
 </script>
+
+<template>
+  <div>
+    <header>
+      <h2>Your emotions over&nbsp;</h2>
+      <TextSwitcher class="switcher" :options="switcherOptions" />
+    </header>
+    <line-chart
+      :key="JSON.stringify(chartData) + JSON.stringify(chartOptions)"
+      :chartData="chartData"
+      :options="chartOptions"
+      :height="600"
+    ></line-chart>
+  </div>
+</template>
 
 <style scoped>
 header {
@@ -154,15 +168,5 @@ header {
 h2 {
   font-weight: 400;
   margin: 0;
-}
-
-.chart-container {
-  height: 800px;
-  width: 100%;
-}
-
-.chart {
-  width: 100%;
-  height: 100%;
 }
 </style>
