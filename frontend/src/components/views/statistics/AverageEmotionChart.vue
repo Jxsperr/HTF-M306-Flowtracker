@@ -5,6 +5,8 @@ import moment from "moment"
 import { LineChart } from "vue-chart-3"
 import { Chart, registerables } from "chart.js"
 
+import Obaba from '../../../assets/obaba.jpg'
+
 import { emotions as emotionsData } from "../../../mockData"
 
 const switcherOptions = [
@@ -56,7 +58,7 @@ const chartOptions = {
       callbacks: {
         label: context => {
           const label = context.dataset.label || ""
-          const value = context.parsed.y;
+          const value = context.parsed.y
           return `${label}: ${value.toFixed(2)}%`
         }
       }
@@ -67,6 +69,10 @@ const chartOptions = {
 const emotions = emotionsData.map(emotion => `${emotion.emoji} ${emotion.title}`)
 
 const backgroundColors = emotionsData.map(emotion => emotion.color)
+
+const bgImage = ref(new Image())
+
+bgImage.value.src = Obaba
 
 function setTimeframe(timeframe) {
   let xAxisLabels

@@ -125,10 +125,10 @@ const uniqueMonths = [
 function dateUpdated(newDate){
   selectedDate.value = newDate
 
+  console.log('new date', newDate)
+
   displayedFlows.value = flows.value.filter(flow => {
     const date = new Date(flow.dateCreated)
-    
-    console.log('flow ', date, selectedDate.value.year)
 
     return date.getFullYear() == selectedDate.value.year && date.getMonth() == uniqueMonths.indexOf(selectedDate.value.month)
   })

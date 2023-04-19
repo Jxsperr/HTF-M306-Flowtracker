@@ -174,6 +174,20 @@
     }
 
     @media screen and (max-width: 500px) {
+        .post {
+            width: 100%;
+            margin: 0;
+
+            border-radius: 0;
+        }
+
+        .post .body {
+            margin-top: -2.5rem;
+            background-color: var(--col-white);
+            border-top-left-radius: var(--round);
+            border-top-right-radius: var(--round);
+        }
+
         .bottom {
             flex-direction: column;
         }
@@ -187,22 +201,6 @@
             margin-top: 1rem;
         }
     }
-
-@media screen and (max-width: 450px) {
-    .post {
-        width: 100%;
-        margin: 0;
-
-        border-radius: 0;
-    }
-
-    .post .body {
-        margin-top: -2.5rem;
-        background-color: var(--col-white);
-        border-top-left-radius: var(--round);
-        border-top-right-radius: var(--round);
-    }
-}
 
 @media screen and (max-width: 300px) {
     .post .body {

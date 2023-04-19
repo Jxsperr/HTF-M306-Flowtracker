@@ -1,13 +1,13 @@
 const emotions = [
-  { id: 0, title: "Joy", emoji: "😊", color: "#F9D71C" },
-  { id: 1, title: "Sadness", emoji: "😔", color: "#71ABF9" },
-  { id: 2, title: "Anger", emoji: "🤬", color: "#F9694A" },
-  { id: 3, title: "Anxiety", emoji: "😨", color: "#4364F6" },
-  { id: 4, title: "Love", emoji: "❤️", color: "#F57EA1" },
-  { id: 5, title: "Surprise", emoji: "😮", color: "#BE62F6" },
-  { id: 6, title: "Disgust", emoji: "🤢", color: "#3CBE81" },
-  { id: 7, title: "Hope", emoji: "🤗", color: "#5E97F6" },
-  { id: 8, title: "Anticipation", emoji: "🤔", color: "#F1A362" },
+  { id: 0, title: "Joy", emoji: "😊", color: "#f60e67" }, // Pink
+  { id: 1, title: "Sadness", emoji: "😔", color: "#d81b60" }, // Dark Pink
+  { id: 2, title: "Anger", emoji: "🤬", color: "#aa3fe3" }, // Purple
+  { id: 3, title: "Anxiety", emoji: "😨", color: "#4b2ce3" }, // Dark Blue
+  { id: 4, title: "Love", emoji: "❤️", color: "#0b64e8" }, // Blue
+  { id: 5, title: "Surprise", emoji: "😮", color: "#2c9bf9" }, // Light Blue
+  { id: 6, title: "Disgust", emoji: "🤢", color: "#35d5f9" }, // Cyan
+  { id: 7, title: "Hope", emoji: "🤗", color: "#2ef0e2" }, // Turquoise
+  { id: 8, title: "Anticipation", emoji: "🤔", color: "#3de3aa" }, // Green
 ]
 
 const flows = [

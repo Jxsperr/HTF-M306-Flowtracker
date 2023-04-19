@@ -71,7 +71,7 @@ main {
 }
 
 main>header:first-of-type {
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -80,6 +80,10 @@ main>header:first-of-type {
 main>header:first-of-type .icon {
   width: 64px;
   margin-bottom: .5rem;
+}
+
+main>header:first-of-type h1 {
+  margin-bottom: 0;
 }
 
 html, body, #app {
@@ -247,7 +251,7 @@ button.tertiary:active {
 
 @media screen and (max-width: 800px) {
   main>header:first-of-type {
-    margin-bottom: 1rem;
+    margin-bottom: 4rem;
   }
 }
 

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import TextSwitcher from './TextSwitcher.vue'
 
 const props = defineProps({
@@ -28,21 +28,15 @@ const monthSwitcherOptions = ref([])
 
 let updatingMonth = false
 
-// update the month options when the year changed
-watch(selectedYear, updateMonthSwitcherOptions)
-
 function updateMonthSwitcherOptions(selectLastMonth=false) {
-  let monthBefore = selectedMonth.value
-
   const uniqueMonthsInYear = [
     ...new Set(props.dates
       .filter(date => new Date(date).getFullYear() === selectedYear.value)
       .map(date => uniqueMonths[new Date(date).getMonth()]))
   ].sort((a, b) => uniqueMonths.indexOf(a) - uniqueMonths.indexOf(b))
 
-  const mostRecentMonthInYear = selectLastMonth ? uniqueMonthsInYear[0] : uniqueMonthsInYear.at(-1)
+  const mostRecentMonthInYear = selectLastMonth ? uniqueMonthsInYear.at(-1) : uniqueMonthsInYear[0]
   
-  if(monthBefore != mostRecentMonthInYear) updatingMonth = true
   selectedMonth.value = mostRecentMonthInYear
 
   monthSwitcherOptions.value = uniqueMonthsInYear.map(month => ({
@@ -62,13 +56,13 @@ const yearSwitcherOptions = uniqueYears.map(year => ({
 
 function selectedYearChanged(newYear) {
   selectedYear.value = parseInt(newYear)
+
+  updateMonthSwitcherOptions()
 }
 
 function selectedMonthChanged(newMonth) {
   selectedMonth.value = newMonth
-  if(!updatingMonth) emit('update-date', { year: selectedYear.value, month: selectedMonth.value })
-
-  updatingMonth = false
+  emit('update-date', { year: selectedYear.value, month: selectedMonth.value })
 }
 
 // get month options and select the last month (most recent date)
@@ -85,6 +79,7 @@ updateMonthSwitcherOptions(true)
 <style>
 .switchers {
   display: flex;
+  flex-wrap: wrap;
 
   margin-bottom: 4rem;
 }

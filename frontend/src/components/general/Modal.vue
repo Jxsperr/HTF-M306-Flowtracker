@@ -111,10 +111,6 @@ function closeModal(){
 }
 
 @media screen and (max-width: 600px) {
-    .modal {
-        width: calc(100vw - 2rem);
-    }
-
     .content {
         padding: 1rem;
     }
@@ -123,4 +119,15 @@ function closeModal(){
         padding: 1rem 1rem 1rem 2rem;
     }
 }
+
+@media screen and (max-width: 500px) {
+        .modal {
+            width: 100%;
+            margin: 0;
+
+            min-height: 100%;
+
+            border-radius: 0;
+        }
+    }
 </style>
