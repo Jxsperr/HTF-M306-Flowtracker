@@ -25,6 +25,8 @@ const editModalData = ref(null)
 
 const displayedFlows = ref([])
 
+const selectedDate = ref(null)
+
 function cancelRemoveFlow() {
   flowForRemoval.value = null
 }
@@ -114,6 +116,23 @@ function addFlow(flow){
   // sort by dateCreated within group
     flows.value[key].sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated))
 }
+
+const uniqueMonths = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+]
+
+function dateUpdated(newDate){
+  selectedDate.value = newDate
+
+  displayedFlows.value = flows.value.filter(flow => {
+    const date = new Date(flow.dateCreated)
+    
+    console.log('flow ', date, selectedDate.value.year)
+
+    return date.getFullYear() == selectedDate.value.year && date.getMonth() == uniqueMonths.indexOf(selectedDate.value.month)
+  })
+}
 </script>
 
 <template>
@@ -123,13 +142,12 @@ function addFlow(flow){
           <h1>Flows</h1>
         </header>
         
-        <!-- <DateSwitcher :dates="flows.map(flow => flow.dateCreated)" /> -->
-        <DateSwitcher :dates='["2023-04-11T14:30:00", "2022-07-02T14:00:00", "2022-11-14T16:00:00"]' />
+        <DateSwitcher :dates="flows.map(flow => flow.dateCreated)" @update-date="dateUpdated" />
 
         <div class="flows">
               <FlowPreview
               v-for="flow of displayedFlows"
-              :key="date.replace(' ', '-') + flow.id"
+              :key="new Date(flow.dateCreated).toISOString() + flow.id"
               :flow="flow"
               @click="activeFlow = flow" />
             </div>

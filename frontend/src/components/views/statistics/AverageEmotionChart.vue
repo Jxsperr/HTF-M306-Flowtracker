@@ -10,16 +10,16 @@ import { emotions as emotionsData } from "../../../mockData"
 const switcherOptions = [
   {
     label: "Week",
-    onSelected: () => setTimeframe("1w"),
+    value: "1w",
     selected: true
   },
   {
     label: "Month",
-    onSelected: () => setTimeframe("1m"),
+    value: "1m"
   },
   {
     label: "Year",
-    onSelected: () => setTimeframe("1y"),
+    value: "1y"
   }
 ]
 
@@ -146,7 +146,7 @@ setTimeframe("1w")
   <div>
     <header>
       <h2>Your average&nbsp;</h2>
-      <TextSwitcher class="switcher" :options="switcherOptions" />
+      <TextSwitcher class="switcher" :options="switcherOptions" @update-option="newValue=>setTimeframe(newValue)" />
     </header>
 
     <line-chart

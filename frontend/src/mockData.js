@@ -679,7 +679,7 @@ const flows = [
     title: "Trying a New Sport",
     description:
       "Confronted my fear and curiosity by trying a new sport, learning to appreciate the process of acquiring new skills.",
-  },
+  }
 ]
 
 const posts = [

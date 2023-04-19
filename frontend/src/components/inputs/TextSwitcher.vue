@@ -1,11 +1,11 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, watchEffect } from 'vue'
 
 const props = defineProps({
-    options: {
-        type: Array,
-        required: true
-    }
+  options: {
+    type: Array,
+    required: true
+  }
 })
 
 const optionsRef = ref(props.options)
@@ -13,25 +13,28 @@ const selectedOption = ref(null)
 
 const emits = defineEmits(['update-option'])
 
+watchEffect(() => {
+  selectedOption.value = optionsRef.value.find(option => option.selected === true) || optionsRef.value[0]
+})
+
 watch(
   () => props.options,
-  (newOptions) => {
-    optionsRef.value = newOptions;
-    selectedOption.value = newOptions.find(_option => _option.selected) || newOptions[0];
+  newOptions => {
+    optionsRef.value = newOptions
   },
   { immediate: true }
 )
 
 function selectOption(newOptionValue) {
-  const newSelectedOption = optionsRef.value.find(option => option.label == newOptionValue)
+  const newSelectedOption = optionsRef.value.find(option => option.label === newOptionValue)
 
   if (newSelectedOption) {
     if (selectedOption.value) selectedOption.value.selected = false
 
     selectedOption.value = newSelectedOption
-    selectedOption.selected = true
+    newSelectedOption.selected = true
 
-    if(selectedOption.onSelected) selectedOption.onSelected()
+    if (selectedOption.value.onSelected) selectedOption.value.onSelected()
   }
 
   emits('update-option', newOptionValue)
@@ -39,11 +42,11 @@ function selectOption(newOptionValue) {
 </script>
 
 <template>
-    <select @change="selectOption($event.target.value)" :value="selectedOption ? selectedOption.label : ''">
-        <option v-for="option in optionsRef" :value="option.value || option.label">
-            {{ option.label }}
-        </option>
-    </select>
+  <select @change="selectOption($event.target.value)" :value="selectedOption ? selectedOption.value : ''">
+    <option v-for="option in optionsRef" :value="option.value || option.label">
+      {{ option.label }}
+    </option>
+  </select>
 </template>
 
 

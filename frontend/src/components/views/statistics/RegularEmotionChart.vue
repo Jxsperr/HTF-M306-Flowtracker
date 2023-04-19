@@ -9,19 +9,19 @@
 
   const switcherOptions = [{
       label: "1 Week",
-      onSelected: () => setTimeframe("1w"),
+      value: "1w"
     },
     {
       label: "1 Month",
-      onSelected: () => setTimeframe("1m"),
+      value: "1m"
     },
     {
       label: "1 Year",
-      onSelected: () => setTimeframe("1y"),
+      value: "1y"
     },
     {
       label: "All Time",
-      onSelected: () => setTimeframe("all"),
+      value: "all",
       selected: true
     }
   ]
@@ -144,7 +144,7 @@
   <div>
     <header>
       <h2>Your emotions over&nbsp;</h2>
-      <TextSwitcher class="switcher" :options="switcherOptions" />
+      <TextSwitcher class="switcher" :options="switcherOptions" @update-option="setTimeframe" />
     </header>
     <line-chart
       :key="JSON.stringify(chartData) + JSON.stringify(chartOptions)"
