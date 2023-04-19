@@ -125,8 +125,6 @@ const uniqueMonths = [
 function dateUpdated(newDate){
   selectedDate.value = newDate
 
-  console.log('new date', newDate)
-
   displayedFlows.value = flows.value.filter(flow => {
     const date = new Date(flow.dateCreated)
 
