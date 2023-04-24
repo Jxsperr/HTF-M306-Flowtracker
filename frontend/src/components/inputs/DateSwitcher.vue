@@ -71,7 +71,7 @@ updateMonthSwitcherOptions(true)
 
 <template>
   <div class="switchers">
-    <TextSwitcher :options="monthSwitcherOptions" @update-option="selectedMonthChanged" />
+    <TextSwitcher :options="monthSwitcherOptions" @update-option="selectedMonthChanged" />&ThickSpace;
     <TextSwitcher :options="yearSwitcherOptions" @update-option="selectedYearChanged" />
   </div>
 </template>
@@ -80,7 +80,5 @@ updateMonthSwitcherOptions(true)
 .switchers {
   display: flex;
   flex-wrap: wrap;
-
-  margin-bottom: 4rem;
 }
 </style>

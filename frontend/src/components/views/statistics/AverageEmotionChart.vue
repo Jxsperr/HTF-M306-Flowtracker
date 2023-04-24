@@ -151,7 +151,7 @@ setTimeframe("1w")
 <template>
   <div>
     <header>
-      <h2>Your average&nbsp;</h2>
+      <h2>Your average&ThickSpace;</h2>
       <TextSwitcher class="switcher" :options="switcherOptions" @update-option="newValue=>setTimeframe(newValue)" />
     </header>
 

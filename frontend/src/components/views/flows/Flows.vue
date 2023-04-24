@@ -140,7 +140,10 @@ function dateUpdated(newDate){
           <h1>Flows</h1>
         </header>
         
-        <DateSwitcher :dates="flows.map(flow => flow.dateCreated)" @update-date="dateUpdated" />
+        <div class="titlecontainer">
+          <h2>Your flows in&ThickSpace;</h2>
+          <DateSwitcher :dates="flows.map(flow => flow.dateCreated)" @update-date="dateUpdated" />
+        </div>
 
         <div class="flows">
               <FlowPreview
@@ -173,7 +176,18 @@ function dateUpdated(newDate){
     <NavBottom activePage="flows" @addFlow="addFlow"></NavBottom>
 </template>
 
-<style scoped>  
+<style scoped>
+  h2 {
+    margin: 0;
+  }
+  
+  .titlecontainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    margin-bottom: 4rem;
+  }
   .group:first-of-type h2 {
     margin-top: 0;
   }

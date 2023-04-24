@@ -4,7 +4,7 @@ import AppComponent from './App.vue'
 import Flows from "./components/views/flows/Flows.vue"
 import Statistics from "./components/views/statistics/Statistics.vue"
 import Explore from "./components/views/explore/Explore.vue"
-import Profile from "./components/views/profile/Profile.vue"
+import Settings from "./components/views/settings/Settings.vue"
 
 import { createRouter, createWebHistory } from 'vue-router'
 import VueLazyload from 'vue-lazyload'
@@ -16,13 +16,19 @@ const router = createRouter({
             path: '/explore', component: Explore
         },
         {
-            path: '/', component: Flows
+            path: '/', redirect: '/flows'
+        },
+        {
+            path: '/flows', component: Flows
         },
         {
             path: '/statistics', component: Statistics
         },
         {
-            path: '/profile', component: Profile
+            path: '/settings', component: Settings
+        },
+        {
+            path: '/:pathMatch(.*)*', redirect: '/'
         }
     ]
 })

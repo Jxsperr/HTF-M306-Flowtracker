@@ -112,7 +112,7 @@ function closeModal(){
 
 @media screen and (max-width: 600px) {
     .content {
-        padding: 1rem;
+        padding: 2rem;
     }
 
     .titlebar {
@@ -122,6 +122,9 @@ function closeModal(){
 
 @media screen and (max-width: 500px) {
         .modal {
+            display: flex;
+            flex-direction: column;
+
             width: 100%;
             margin: 0;
 
@@ -129,5 +132,21 @@ function closeModal(){
 
             border-radius: 0;
         }
+
+        .modal .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
     }
+
+  @media screen and (max-width: 350px) {
+    .content {
+        padding: 1rem;
+    }
+
+    .titlebar {
+        padding: 1rem;
+    }
+  }
 </style>

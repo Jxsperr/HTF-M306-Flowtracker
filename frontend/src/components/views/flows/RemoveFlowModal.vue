@@ -13,16 +13,16 @@ function removeFlow(){
 </script>
 
 <template>
-    <Modal modal-title="Delete Flow" title="Delete Flow?" @close="cancelRemoveFlow">
+    <Modal modal-title="Remove Flow" title="Remove Flow?" @close="cancelRemoveFlow">
         <template #content>
         <p>It will be gone <b>forever.</b></p>
         <div class="deleteModalButtons">
             <button class="filled" @click="cancelRemoveFlow">
-            <p>Cancel</p>
+                <p>Cancel</p>
             </button>
             
             <button @click="removeFlow">
-            <p>Delete</p>
+                <p>Remove</p>
             </button>
         </div>
         </template>
@@ -31,10 +31,27 @@ function removeFlow(){
 
 <style scoped>
   .deleteModalButtons {
-  display: flex;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .deleteModalButtons button:first-of-type {
     margin-right: 1rem;
+  }
+
+  .deleteModalButtons button {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 350px) {
+    .deleteModalButtons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .deleteModalButtons button:first-of-type {
+        margin-top: 4rem;
+        margin-right: 0;
+    }
   }
 </style>

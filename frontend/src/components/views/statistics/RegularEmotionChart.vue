@@ -143,7 +143,7 @@
 <template>
   <div>
     <header>
-      <h2>Your emotions over&nbsp;</h2>
+      <h2>Your emotions over&ThickSpace;</h2>
       <TextSwitcher class="switcher" :options="switcherOptions" @update-option="setTimeframe" />
     </header>
     <line-chart

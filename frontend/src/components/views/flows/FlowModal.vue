@@ -1,6 +1,6 @@
 <script setup>
     import Emoji from '../../general/Emoji.vue'
-
+    import Modal from '../../general/Modal.vue';
     import { formatDate } from '../../../services/formatDate'
 
     const props = defineProps({
@@ -23,27 +23,17 @@
 </script>
 
 <template>
-    <div class="container">
-        <div class="background" @click="closeModal"></div>
-
-        <div class="flow">
-            <div class="body">
-                <header>
-                    <button class="tertiary" @click="closeModal">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></g></svg>
-                    </button>
-                </header>
-
-                <div class="emojis" v-if="flow.emotions">
-                    <Emoji v-for="(emotionId, index) in flow.emotions" :emotionId="emotionId" :key="emotionId + '-' + index" />
-                </div>
-
-                <p class="title">{{ flow.title }}</p>
-                <p class="description" v-if="flow.description">{{ flow.description }}</p>
-
-                <p class="date">{{ formatDate(flow.dateCreated) }}</p>
+    <Modal @close="closeModal">
+        <template #content>
+            <div class="emojis" v-if="flow.emotions">
+                <Emoji v-for="(emotionId, index) in flow.emotions" :emotionId="emotionId" :key="emotionId + '-' + index" />
             </div>
-            
+
+            <p class="title">{{ flow.title }}</p>
+            <p class="description" v-if="flow.description">{{ flow.description }}</p>
+
+            <p class="date">{{ formatDate(flow.dateCreated) }}</p>
+
             <div class="bottom">
                 <div class="buttons">
                     <button class="tertiary" @click="edit">
@@ -54,87 +44,23 @@
                     </button>
                 </div>
             </div>
-
-        </div>
-
-    </div>
+        </template>
+    </Modal>
 </template>
 
 <style scoped>
-    .container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        box-sizing: border-box;
-        
-        width: 100vw;
-        height: 100%;
-
-        overflow-y: scroll;
-
-        z-index: 200;
-    }
-
-    .background {
-        position: fixed;
-
-        cursor: pointer;
-
-        top: 0;
-        left: 0;
-
-        width: 100vw;
-        height: 100%;
-
-        z-index: -1;
-
-        background-color: var(--col-light-gray);
-    }
-
-    .flow {
-        position: relative;
-
-        z-index: 2;
-        
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        box-sizing: border-box;
-
-        background-color: var(--col-very-light-gray);
-
-        border-radius: var(--round);
-        margin: 2rem auto;
-
-        width: calc(100% - 4rem);
-
-        max-width: 800px;
-
-        background-color: var(--col-white);
-
-        padding: 4rem;
-        box-shadow: var(--shadow-md);
-
-        transition: box-shadow var(--transition-time);
-    }
-
     .bottom {
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
-        justify-content: space-between;
+        justify-content: end;
         width: 100%;
 
-        margin-top: 2rem;
-    }
+        flex-grow: 1;
 
-    header {
-        display: flex;
-        justify-content: end;
-        margin-bottom: 1rem;
-        margin-top: -4rem;
-        margin-right: -3rem;
+        justify-self: flex-end;
+
+        margin-top: 2rem;
     }
 
     .buttons {
@@ -143,10 +69,6 @@
         align-items: center;
 
         transition: opacity var(--transition-time);
-    }
-
-    .flow:has(:hover, :active) header {
-        opacity: 1;
     }
 
     .buttons button {
@@ -185,16 +107,6 @@
     }
 
     @media screen and (max-width: 600px) {
-        .flow {
-            padding: 2rem;
-        }
-
-        header {
-            margin-bottom: 1rem;
-            margin-top: -2rem;
-            margin-right: -1rem;
-        }
-
         .emojis {
             margin-bottom: 1rem;
         }
@@ -216,30 +128,9 @@
         }
     }
 
-    
-    @media screen and (max-width: 450px) {
-        .flow {
-            width: 100%;
-            min-height: 100%;
-            margin: 0;
-
-            border-radius: 0;
-        }
-    }
-
     @media screen and (max-width: 350px) {
         .title {
             font-size: 1.5rem;
-        }
-
-        .flow {
-            padding: 1rem;
-        }
-
-        header {
-            margin-bottom: 1rem;
-            margin-top: -1rem;
-            margin-right: 0;
         }
     }
 </style>
