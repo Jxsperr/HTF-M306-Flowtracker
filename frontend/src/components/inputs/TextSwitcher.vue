@@ -57,18 +57,15 @@ function resizeSelect() {
   const selectedText = selectedOption.value.label
   measureRef.value.textContent = selectedText
   selectRef.value.style.width = `${measureRef.value.offsetWidth}px`
-
-  console.log('resized')
 }
 
 onMounted(async () => {
-  selectedOption.value = optionsRef.value.find(option => option.selected === true) || optionsRef.value[0];
-  resizeSelect();
-  window.addEventListener('resize', resizeSelect);
-  // Add these lines to force an update
-  await nextTick();
-  resizeSelect();
-});
+  selectedOption.value = optionsRef.value.find(option => option.selected === true) || optionsRef.value[0]
+  resizeSelect()
+  window.addEventListener('resize', resizeSelect)
+  await nextTick()
+  resizeSelect()
+})
 
 
 onBeforeUnmount(()=>{

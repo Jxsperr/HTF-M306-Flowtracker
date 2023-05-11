@@ -26,8 +26,6 @@ const selectedMonth = ref(mostRecentMonth)
 
 const monthSwitcherOptions = ref([])
 
-let updatingMonth = false
-
 function updateMonthSwitcherOptions(selectLastMonth=false) {
   const uniqueMonthsInYear = [
     ...new Set(props.dates
