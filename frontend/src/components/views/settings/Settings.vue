@@ -10,7 +10,13 @@ import NavBottom from '../../layout/NavBottom.vue'
         </header>
 
         <section>
-          
+          <div id="links">
+            <a href="#">Profile</a>
+            <a href="#">Privacy</a>
+            <a href="#">Notifications</a>
+            <a href="#">About</a>
+            <a href="#">Terms of Service</a>
+          </div>
         </section>
     </main>
 
@@ -18,6 +24,19 @@ import NavBottom from '../../layout/NavBottom.vue'
 </template>
 
 <style scoped>
+#links {
+  width: fit-content;
+  margin: auto;
+}
+
+#links a {
+  display: block;
+  width: fit-content;
+
+  margin: 1rem;
+
+  font-size: 2rem;
+}
 
 section {
   display: flex;

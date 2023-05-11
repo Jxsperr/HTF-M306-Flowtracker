@@ -144,7 +144,9 @@
   <div>
     <header>
       <h2>Your emotions over&ThickSpace;</h2>
-      <TextSwitcher class="switcher" :options="switcherOptions" @update-option="setTimeframe" />
+      <div>
+        <TextSwitcher :options="switcherOptions" @update-option="setTimeframe" />
+      </div>
     </header>
     <line-chart
       :key="JSON.stringify(chartData) + JSON.stringify(chartOptions)"

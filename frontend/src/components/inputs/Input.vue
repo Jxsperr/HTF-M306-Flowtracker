@@ -44,18 +44,17 @@
     const isFloating = ref(false)
 
     function updateFloating() {
-    isFloating.value = inputValue.value !== ""
+      isFloating.value = inputValue.value !== ""
     }
 
     watch(inputValue, newValue => {
-    emit("update:modelValue", newValue)
-    updateFloating()
+      emit("update:modelValue", newValue)
+      updateFloating()
     })
 
     onMounted(updateFloating)
 
     const handleFocus = () => isFloating.value = true
-
     const handleBlur = () => updateFloating()
 </script>
   

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, watchEffect, onMounted, onBeforeUnmount } from 'vue'
+import { ref, watch, onUpdated, onMounted, onBeforeUnmount, nextTick } from 'vue'
 
 const props = defineProps({
   options: {
@@ -20,9 +20,11 @@ const measureRef = ref(null)
 
 const emits = defineEmits(['update-option'])
 
-watchEffect(() => {
-  selectedOption.value = optionsRef.value.find(option => option.selected === true) || optionsRef.value[0]
-  resizeSelect()
+onUpdated(() => {
+  nextTick(()=>{
+    selectedOption.value = optionsRef.value.find(option => option.selected === true) || optionsRef.value[0]
+    resizeSelect()
+  })
 })
 
 watch(
@@ -55,19 +57,22 @@ function resizeSelect() {
   const selectedText = selectedOption.value.label
   measureRef.value.textContent = selectedText
   selectRef.value.style.width = `${measureRef.value.offsetWidth}px`
+
+  console.log('resized')
 }
 
-function handleWindowResize() {
-  resizeSelect()
-}
+onMounted(async () => {
+  selectedOption.value = optionsRef.value.find(option => option.selected === true) || optionsRef.value[0];
+  resizeSelect();
+  window.addEventListener('resize', resizeSelect);
+  // Add these lines to force an update
+  await nextTick();
+  resizeSelect();
+});
 
-onMounted(() => {
-  resizeSelect()
-  window.addEventListener('resize', handleWindowResize)
-})
 
 onBeforeUnmount(()=>{
-  window.removeEventListener('resize', handleWindowResize)
+  window.removeEventListener('resize', resizeSelect)
 })
 </script>
 
@@ -76,7 +81,7 @@ onBeforeUnmount(()=>{
     'select-container': true,
     bold: props.bold
   }">
-    <select ref="selectRef" @change="selectOption($event.target.value)" :value="selectedOption ? selectedOption.value : ''">
+    <select ref="selectRef" @change="selectOption($event.target.value)" :value="selectedOption?.value || ''">
       <option v-for="option in optionsRef" :value="option.value || option.label">
         {{ option.label }}
       </option>
@@ -89,6 +94,8 @@ onBeforeUnmount(()=>{
 <style>
 .bold select, .bold .hidden {
   font-weight: 900;
+  font-size: 2.25rem;
+  padding: 0em 2.5rem 0 .5rem;
 }
 
 .select-container {
@@ -97,11 +104,11 @@ onBeforeUnmount(()=>{
 }
 
 select {
-    appearance: none; /* Remove the default arrow */
+    appearance: none;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%23f60e67' d='M7 10l5 5 5-5z'/></svg>");
     background-repeat: no-repeat;
-    background-position: right; /* Adjust the arrow's position */
-    background-size: 1em; /* Adjust the arrow's size */
+    background-position: right;
+    background-size: 1em;
 
     height: 1.5em;
     padding: 0em 2.5rem 0 .5rem;
@@ -143,15 +150,13 @@ option:hover {
   visibility: hidden;
   position: absolute;
   white-space: nowrap;
-  font-size: 2.25rem;
-  font-weight: 400;
-  padding: 0em 2.5rem 0 .5rem;
 }
 
 @media screen and (max-width: 350px) {
   select, .hidden, option {
     font-size: 1.5rem;
   }
+  
   select, .hidden {
     padding: 0em 1.5rem 0 .5rem;
   }

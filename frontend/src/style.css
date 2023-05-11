@@ -71,7 +71,7 @@ main {
 }
 
 main>header:first-of-type {
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
   align-items: center;
   display: flex;
   flex-direction: column;
